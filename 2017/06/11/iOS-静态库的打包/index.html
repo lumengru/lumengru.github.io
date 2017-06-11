@@ -108,8 +108,15 @@
 <meta property="og:image" content="http://ody22imht.bkt.clouddn.com/WX20170611-161212@2x.png">
 <meta property="og:image" content="http://ody22imht.bkt.clouddn.com/WX20170611-161949@2x.png">
 <meta property="og:image" content="http://ody22imht.bkt.clouddn.com/WX20170611-161808@2x.png">
+<meta property="og:image" content="http://ody22imht.bkt.clouddn.com/WX20170611-162314@2x.png">
 <meta property="og:image" content="http://ody22imht.bkt.clouddn.com/WX20170611-162630@2x.png">
-<meta property="og:updated_time" content="2017-06-11T09:24:14.000Z">
+<meta property="og:image" content="http://ody22imht.bkt.clouddn.com/WX20170611-173037@2x.png">
+<meta property="og:image" content="http://ody22imht.bkt.clouddn.com/WX20170611-173406@2x.png">
+<meta property="og:image" content="http://ody22imht.bkt.clouddn.com/WX20170611-161212@2x.png">
+<meta property="og:image" content="http://ody22imht.bkt.clouddn.com/WX20170611-174825@2x.png">
+<meta property="og:image" content="http://ody22imht.bkt.clouddn.com/WX20170611-173725@2x.png">
+<meta property="og:image" content="http://ody22imht.bkt.clouddn.com/WX20170611-174032@2x.png">
+<meta property="og:updated_time" content="2017-06-11T09:52:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS-静态库的打包">
 <meta name="twitter:description" content="这段时间公司需要把一个工程里的代码抽出来制作成静态库, 所以就研究了一下怎么打包静态库">
@@ -454,8 +461,13 @@
 <li><p>选中文件点击 <strong>Show in Finder</strong></p>
 <p><img src="http://ody22imht.bkt.clouddn.com/WX20170611-161808@2x.png" style="zoom:30%"></p>
 </li>
+<li><p>此时文件里面有个 <strong>.a</strong> 文件 和 一个文件夹</p>
+<p> <img src="http://ody22imht.bkt.clouddn.com/WX20170611-162314@2x.png" style="zoom:30%"></p>
+</li>
 </ul>
 </li>
+</ol>
+<ol>
 <li><p>静态库合并</p>
 <ul>
 <li><p>让工程在<strong>真机</strong>和<strong>模拟器</strong>上各运行一次, 然后点击 <strong>Show in Finder</strong> 选择文件夹 <strong>分栏展示</strong>, 可以看到文件的上一级有两个文件夹 <strong>Release-iphoneos</strong> 和 <strong>Release-iphonesimulator</strong><br><img src="http://ody22imht.bkt.clouddn.com/WX20170611-162630@2x.png" style="zoom:30%"></p>
@@ -468,6 +480,38 @@
 </ul>
 </li>
 </ol>
+<h2 id="frameworke文件静态库打包"><a href="#frameworke文件静态库打包" class="headerlink" title=".frameworke文件静态库打包"></a>.frameworke文件静态库打包</h2><ol>
+<li><p>和 <strong>.a</strong> 文件的创建一样 直接把需要打包的代码放到根目录里面, 不同的是 <strong>自动生成的.h</strong> 文件不用删除<br><img src="http://ody22imht.bkt.clouddn.com/WX20170611-173037@2x.png" style="zoom:30%"></p>
+</li>
+<li><p>暴露头文件,和 <strong>.a</strong> 文件不同的是 <strong>.frameworke</strong>文件是在 <strong>Headers</strong> 里面暴露出来</p>
+<p><img src="http://ody22imht.bkt.clouddn.com/WX20170611-173406@2x.png" style="zoom:30%"></p>
+</li>
+<li><p>和 <strong>.a</strong>文件一样,<strong>.frmeworke</strong>静态库也分为 <strong>Debug</strong> 和 <strong>Release</strong> 这里我们可以直接选择 Release</p>
+<p> <img src="http://ody22imht.bkt.clouddn.com/WX20170611-161212@2x.png" style="zoom:30%"></p>
+</li>
+<li><p>设置打包的是静态库。因为动态库也可以是以framework形式存在，所以需要设置，否则默认打出来的是动态库</p>
+<ul>
+<li><p>target-&gt;BuildSetting -&gt;搜索关键字mach-&gt;Mach-o Type 设为Static Library（这个默认选项是动态的）</p>
+<p><img src="http://ody22imht.bkt.clouddn.com/WX20170611-174825@2x.png" style="zoom:30%"></p>
+</li>
+</ul>
+</li>
+<li><p>和<strong>.a</strong>文件一样, <strong>.frameworke</strong> 也分为真机运行 和模拟器运行, 所以 真机运行一次, 模拟器运行一次, 然后合并</p>
+<p><img src="http://ody22imht.bkt.clouddn.com/WX20170611-173725@2x.png" style="zoom:30%"></p>
+</li>
+<li><p>双击<strong>.frameworke</strong> 文件,可以看到</p>
+<p><img src="http://ody22imht.bkt.clouddn.com/WX20170611-174032@2x.png" style="zoom:30%"></p>
+</li>
+<li><p>把SDK合并完成之后,直接替换掉<strong>.frameworke</strong> 文件里面的SDK文件就可以了</p>
+</li>
+</ol>
+<h2 id="Bundel-文件"><a href="#Bundel-文件" class="headerlink" title="Bundel 文件"></a>Bundel 文件</h2><h3 id="Bundel文件是什么"><a href="#Bundel文件是什么" class="headerlink" title="Bundel文件是什么"></a>Bundel文件是什么</h3><ol>
+<li><p>什么是Bundle文件？<br> 简单理解，就是资源文件包。我们将许多图片、XIB、文本文件组织在一起，打包成一个Bundle文件。方便在其他项目中引用包内的资源。</p>
+</li>
+<li><p>Bundle文件的特点？<br> Bundle是静态的，也就是说，我们包含到包中的资源文件作为一个资源包是不参加项目编译的。也就意味着，bundle包中不能包含可执行的文件。它仅仅是作为资源，被解析成为特定的2进制数据。</p>
+</li>
+</ol>
+<h3 id="Bundle文件制作"><a href="#Bundle文件制作" class="headerlink" title="Bundle文件制作"></a>Bundle文件制作</h3><p>直接在桌面新建一个文件夹然后把后缀名改为 <strong>.bundle</strong> 就可以了, 向里面放文件的时候直接双击打开,然后把文件拖入进去</p>
 
       
     </div>
@@ -763,7 +807,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一些概念的补充"><span class="nav-number">1.</span> <span class="nav-text">一些概念的补充</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#a文件静态库打包"><span class="nav-number">2.</span> <span class="nav-text">.a文件静态库打包</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一些概念的补充"><span class="nav-number">1.</span> <span class="nav-text">一些概念的补充</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#a文件静态库打包"><span class="nav-number">2.</span> <span class="nav-text">.a文件静态库打包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#frameworke文件静态库打包"><span class="nav-number">3.</span> <span class="nav-text">.frameworke文件静态库打包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bundel-文件"><span class="nav-number">4.</span> <span class="nav-text">Bundel 文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Bundel文件是什么"><span class="nav-number">4.1.</span> <span class="nav-text">Bundel文件是什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bundle文件制作"><span class="nav-number">4.2.</span> <span class="nav-text">Bundle文件制作</span></a></li></ol></li></ol></div>
             
 
           </div>
