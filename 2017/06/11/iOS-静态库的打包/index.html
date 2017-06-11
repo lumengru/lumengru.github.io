@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Swift 控件," />
+  <meta name="keywords" content="iOS 功能," />
 
 
 
@@ -95,17 +95,25 @@
 
 
 
-<meta name="description" content="用Swift写的UILabel文本">
-<meta name="keywords" content="Swift 控件">
+<meta name="description" content="这段时间公司需要把一个工程里的代码抽出来制作成静态库, 所以就研究了一下怎么打包静态库">
+<meta name="keywords" content="iOS 功能">
 <meta property="og:type" content="article">
-<meta property="og:title" content="UILabel">
-<meta property="og:url" content="http://yoursite.com/2016/11/21/UILabel/index.html">
+<meta property="og:title" content="iOS-静态库的打包">
+<meta property="og:url" content="http://yoursite.com/2017/06/11/iOS-静态库的打包/index.html">
 <meta property="og:site_name" content="卢梦如的年轮">
-<meta property="og:description" content="用Swift写的UILabel文本">
-<meta property="og:updated_time" content="2017-06-08T06:01:50.000Z">
+<meta property="og:description" content="这段时间公司需要把一个工程里的代码抽出来制作成静态库, 所以就研究了一下怎么打包静态库">
+<meta property="og:image" content="http://ody22imht.bkt.clouddn.com/WX20170611-160303@2x.png">
+<meta property="og:image" content="http://ody22imht.bkt.clouddn.com/WX20170611-160841@2x.png">
+<meta property="og:image" content="http://ody22imht.bkt.clouddn.com/WX20170611-161122@2x.png">
+<meta property="og:image" content="http://ody22imht.bkt.clouddn.com/WX20170611-161212@2x.png">
+<meta property="og:image" content="http://ody22imht.bkt.clouddn.com/WX20170611-161949@2x.png">
+<meta property="og:image" content="http://ody22imht.bkt.clouddn.com/WX20170611-161808@2x.png">
+<meta property="og:image" content="http://ody22imht.bkt.clouddn.com/WX20170611-162630@2x.png">
+<meta property="og:updated_time" content="2017-06-11T09:22:35.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="UILabel">
-<meta name="twitter:description" content="用Swift写的UILabel文本">
+<meta name="twitter:title" content="iOS-静态库的打包">
+<meta name="twitter:description" content="这段时间公司需要把一个工程里的代码抽出来制作成静态库, 所以就研究了一下怎么打包静态库">
+<meta name="twitter:image" content="http://ody22imht.bkt.clouddn.com/WX20170611-160303@2x.png">
 
 
 
@@ -133,13 +141,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/11/21/UILabel/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/06/11/iOS-静态库的打包/"/>
 
 
 
 
 
-  <title>UILabel | 卢梦如的年轮</title>
+  <title>iOS-静态库的打包 | 卢梦如的年轮</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -279,7 +287,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/21/UILabel/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/11/iOS-静态库的打包/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="卢梦如">
@@ -296,7 +304,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">UILabel</h1>
+          <h1 class="post-title" itemprop="name headline">iOS-静态库的打包</h1>
         
 
         <div class="post-meta">
@@ -308,8 +316,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-21T21:53:46+08:00">
-                2016-11-21
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-11T15:47:28+08:00">
+                2017-06-11
               </time>
             
 
@@ -331,8 +339,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift</span>
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
                   </a>
                 </span>
 
@@ -349,7 +357,7 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a class="cloud-tie-join-count" href="/2016/11/21/UILabel/#comments" itemprop="discussionUrl">
+                <a class="cloud-tie-join-count" href="/2017/06/11/iOS-静态库的打包/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count join-count" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -375,89 +383,88 @@
       
 
       
-        <p>用Swift写的UILabel文本</p>
+        <p>这段时间公司需要把一个工程里的代码抽出来制作成静态库, 所以就研究了一下怎么打包静态库</p>
 <a id="more"></a>
-<h2 id="UILabel"><a href="#UILabel" class="headerlink" title="UILabel"></a>UILabel</h2><ul>
-<li><p>创建 <strong>UILabel</strong> 并设置坐标</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">let label = UILabel(frame: CGRect(x: 10, y: 60, width: 300, height: 100))</div></pre></td></tr></table></figure>
+<h2 id="一些概念的补充"><a href="#一些概念的补充" class="headerlink" title="一些概念的补充"></a>一些概念的补充</h2><ol>
+<li><p>什么是库？</p>
+<p> 所谓库就是程序代码的集合，是共享程序代码的一种方式。</p>
 </li>
-</ul>
+<li><p>库的分类</p>
+<p> 根据程序代码的开源情况，库可以分为两类</p>
 <ul>
-<li><p>设置文字</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">label.text = &quot;卢梦如&quot;</div></pre></td></tr></table></figure>
+<li><p>开源库</p>
+<p>源代码是公开的，你可以看到具体实现。比如GitHub上比较出名的第三方框架AFNetworking、SDWebImage。</p>
+</li>
+<li><p>闭源库</p>
+<p>不公开源代码，只公开调用的接口，看不到具体的实现，是一个编译后的二进制文件。这种常见于一些公司的SDK包，比如高德地图SDK、环信即时通讯SDK等等。而闭源库又分为两类：静态库和动态库。本篇重点要讲的便是其中的静态库。</p>
 </li>
 </ul>
+</li>
+</ol>
+<p>3、静态库和动态库的存在形式和使用区别</p>
+<ol>
+<li><p>存在形式：</p>
 <ul>
-<li><p>设置字体颜色</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">label.textColor = UIColor.white</div></pre></td></tr></table></figure>
+<li><p>静态库</p>
+<p>  以”.a”或者“.framework”为文件后缀名</p>
+</li>
+<li><p>动态库</p>
+<p>  以”.dylib”或者“.framework”为文件后缀名</p>
 </li>
 </ul>
+</li>
+<li><p>使用区别：</p>
 <ul>
-<li><p>设置 UILabel 背景颜色</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">label.backgroundColor = UIColor.black</div></pre></td></tr></table></figure>
-</li>
-<li><p>设置对齐方式 (居左, 居中, 居右)</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">label.textAlignment = .right</div></pre></td></tr></table></figure>
-</li>
+<li>静态库链接时会被完整的复制到可执行文件中，被多次使用就有多份拷贝。</li>
+<li>动态库链接时不复制，程序运行时由系统动态加载到内存，供程序调用。而且系统只加载一次，多个程序共用，节省内存。</li>
 </ul>
+</li>
+</ol>
+<h2 id="a文件静态库打包"><a href="#a文件静态库打包" class="headerlink" title=".a文件静态库打包"></a>.a文件静态库打包</h2><ol>
+<li><p>打开Xcode创建一个新的工程，这里以Xcode8为例，选择工程如下：</p>
+<p> <img src="http://ody22imht.bkt.clouddn.com/WX20170611-160303@2x.png" style="zoom:30%"></p>
+</li>
+<li><p>把需要打包的文件放入到根目录里面<strong>(注意是根目录)</strong></p>
 <ul>
-<li><p>设置字体及大小</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">label.font = UIFont(name: &quot;Zapfino&quot;, size: 20)</div></pre></td></tr></table></figure>
+<li><p>自定生成的 <strong>.h</strong> 和 <strong>.m</strong> 文件可以删除</p>
+<p><img src="http://ody22imht.bkt.clouddn.com/WX20170611-160841@2x.png" style="zoom:30%"></p>
 </li>
 </ul>
+</li>
+<li><p>公开接口或者头文件供人调用</p>
 <ul>
-<li><p>设置字体</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">label.font = UIFont.systemFont(ofSize: 30)</div></pre></td></tr></table></figure>
-</li>
+<li>targets-&gt;Build Phases-&gt;Copy Files-&gt;”+”你需要公开的头文件<br><img src="http://ody22imht.bkt.clouddn.com/WX20170611-161122@2x.png" style="zoom:30%"></li>
 </ul>
+</li>
+<li><p>静态库也分为 <strong>Debug</strong> 和 <strong>Release</strong> 这里我们可以直接选择 Release</p>
+<p> <img src="http://ody22imht.bkt.clouddn.com/WX20170611-161212@2x.png" style="zoom:30%"></p>
+</li>
+<li><p>选择编译设备(真机 或者 模拟器)</p>
 <ul>
-<li><p>设置文字过长时的省略方式</p>
+<li><p>注: 真机打包的只能在真机上运行, 模拟器打包的只能在模拟器上运行, 不然会报错, 可以在真机上打一个包, 模拟器上打一个包 然后合并.</p>
+<p><img src="http://ody22imht.bkt.clouddn.com/WX20170611-161949@2x.png" style="zoom:30%"></p>
+</li>
+</ul>
+</li>
+<li><p>此时需要配置的都已经完成按住 <strong>cmd+B</strong> 编译成功之后可以看到 <strong>Products</strong> 文件夹里面的 <strong>.a</strong> 文件从红色变成黑色(注: 可能不会改变颜色, 可以关闭 Xcode 重新打开, 此时颜色应该改变了,不改变也没有关系!!!)</p>
 <ul>
-<li><strong>.byTruncatingTail</strong>   隐藏尾部并显示省略号</li>
-<li><strong>.byTruncatingMiddle</strong>  隐藏中间部分并显示省略号</li>
-<li><strong>.byTruncatingHead</strong>  隐藏头部并显示省略号</li>
-<li><p><strong>.byClipping</strong>  截去多余部分也不显示省略号</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">	label.lineBreakMode = .byTruncatingTail</div><div class="line">	``` </div><div class="line">       </div><div class="line"></div><div class="line">       </div><div class="line">* 文字大小自适应标签宽度 (当文字超出标签宽度时, 自动调整文字大小, 使其不被截断)</div></pre></td></tr></table></figure>
+<li><p>选中文件点击 <strong>Show in Finder</strong></p>
+<p><img src="http://ody22imht.bkt.clouddn.com/WX20170611-161808@2x.png" style="zoom:30%"></p>
 </li>
 </ul>
-<p>label.adjustsFontSizeToFitWidth = true</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">       </div><div class="line">* 使标签可以显示多行文字 (0 没有行数限制, 默认显示一行)</div></pre></td></tr></table></figure>
-<p>label.numberOfLines = 0</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">       </div><div class="line">* 设置文本高亮</div></pre></td></tr></table></figure>
-<p>label.isHighlighted = true</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">       </div><div class="line">* 设置文本高亮颜色</div></pre></td></tr></table></figure>
-<p>label.highlightedTextColor = UIColor.green</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">       </div><div class="line">* 富文本设置</div></pre></td></tr></table></figure>
-<p>let attributeString = NSMutableAttributedString(string: “welcome to China”)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">      </div><div class="line">* 从文本 0 开始 6 个字符字体 HelveticaNeue-Bold, 16号</div></pre></td></tr></table></figure>
-<p>   attributeString.addAttribute(NSFontAttributeName,</p>
-<pre><code>value: UIFont(name: &quot;HelveticaNeue-Bold&quot;, size: 16)!,
-range: NSMakeRange(0, 6))
-</code></pre>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">      </div><div class="line">* 设置字体颜色</div></pre></td></tr></table></figure>
-<pre><code>attributeString.addAttribute(NSForegroundColorAttributeName,
-                                    value: UIColor.black,
-                                    range: NSMakeRange(0, 6))
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">      </div><div class="line">* 设置文字背景颜色</div></pre></td></tr></table></figure>
-</code></pre><p>  attributeString.addAttribute(NSBackgroundColorAttributeName,</p>
-<pre><code>value: UIColor.green,
-range: NSMakeRange(0, 6))
-</code></pre>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">  </div><div class="line">* 设置属性</div></pre></td></tr></table></figure>
-<p>  label.attributedText = attributeString</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">  </div><div class="line">* 也可以一起设置</div></pre></td></tr></table></figure>
-<p>  attributeString.addAttributes(</p>
-<pre><code>[NSFontAttributeName : UIFont(name: &quot;HelveticaNeue-Bold&quot;, size: 16)!,
- NSForegroundColorAttributeName : UIColor.orange,
- NSBackgroundColorAttributeName: UIColor.yellow], 
- range: NSMakeRange(0, 3))        
-</code></pre>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">* 设置属性</div></pre></td></tr></table></figure>
-<pre><code>label.attributedText = attributeString
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">  </div><div class="line">* 把 **UILabel** 添加到父视图上</div></pre></td></tr></table></figure>
-</code></pre><p>  self.view.addSubview(label)</p>
-<p>  ```</p>
+</li>
+<li><p>静态库合并</p>
+<ul>
+<li><p>让工程在<strong>真机</strong>和<strong>模拟器</strong>上各运行一次, 然后点击 <strong>Show in Finder</strong> 选择文件夹 <strong>分栏展示</strong>, 可以看到文件的上一级有两个文件夹 <strong>Release-iphoneos</strong> 和 <strong>Release-iphonesimulator</strong><br><img src="http://ody22imht.bkt.clouddn.com/WX20170611-162630@2x.png" style="zoom:30%"></p>
+</li>
+<li><p>对这两个.a文件进行合并: 打开终端 在终端里面执行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">lipo -create 第一个.a文件的绝对路径 第二个.a文件的绝对路径 -output 最终的.a文件路径。</div></pre></td></tr></table></figure>
+<p>本文中使用的命令如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">lipo -create /Users/harvey/Library/Developer/Xcode/DerivedData/FMDB-ctegiztcjikewoeprxxtmryzetfa/Build/Products/Release-iphoneos/libFMDB.a /Users/harvey/Library/Developer/Xcode/DerivedData/FMDB-ctegiztcjikewoeprxxtmryzetfa/Build/Products/Release-iphonesimulator/libFMDB.a -output /Users/harvey/Desktop/libFMDB.a</div></pre></td></tr></table></figure>
 </li>
 </ul>
+</li>
+</ol>
 
       
     </div>
@@ -513,7 +520,7 @@ range: NSMakeRange(0, 6))
       
         <div class="post-tags">
           
-            <a href="/tags/Swift-控件/" rel="tag"><i class="fa fa-tag"></i> Swift 控件</a>
+            <a href="/tags/iOS-功能/" rel="tag"><i class="fa fa-tag"></i> iOS 功能</a>
           
         </div>
       
@@ -526,8 +533,8 @@ range: NSMakeRange(0, 6))
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/09/22/Hexo-Github-pages-搭建个人博客/" rel="next" title="Hexo + Github pages 搭建个人博客">
-                <i class="fa fa-chevron-left"></i> Hexo + Github pages 搭建个人博客
+              <a href="/2017/05/31/Swift-时间戳/" rel="next" title="Swift-时间戳">
+                <i class="fa fa-chevron-left"></i> Swift-时间戳
               </a>
             
           </div>
@@ -535,10 +542,6 @@ range: NSMakeRange(0, 6))
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/11/21/UIButton/" rel="prev" title="UIButton">
-                UIButton <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -757,7 +760,7 @@ range: NSMakeRange(0, 6))
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#UILabel"><span class="nav-number">1.</span> <span class="nav-text">UILabel</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一些概念的补充"><span class="nav-number">1.</span> <span class="nav-text">一些概念的补充</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#a文件静态库打包"><span class="nav-number">2.</span> <span class="nav-text">.a文件静态库打包</span></a></li></ol></div>
             
 
           </div>

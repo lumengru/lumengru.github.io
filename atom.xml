@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-06-11T05:50:23.000Z</updated>
+  <updated>2017-06-11T09:22:35.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,110 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>iOS-静态库的打包</title>
+    <link href="http://yoursite.com/2017/06/11/iOS-%E9%9D%99%E6%80%81%E5%BA%93%E7%9A%84%E6%89%93%E5%8C%85/"/>
+    <id>http://yoursite.com/2017/06/11/iOS-静态库的打包/</id>
+    <published>2017-06-11T07:47:28.000Z</published>
+    <updated>2017-06-11T09:22:35.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>这段时间公司需要把一个工程里的代码抽出来制作成静态库, 所以就研究了一下怎么打包静态库</p>
+<a id="more"></a>
+<h2 id="一些概念的补充"><a href="#一些概念的补充" class="headerlink" title="一些概念的补充"></a>一些概念的补充</h2><ol>
+<li><p>什么是库？</p>
+<p> 所谓库就是程序代码的集合，是共享程序代码的一种方式。</p>
+</li>
+<li><p>库的分类</p>
+<p> 根据程序代码的开源情况，库可以分为两类</p>
+<ul>
+<li><p>开源库</p>
+<p>源代码是公开的，你可以看到具体实现。比如GitHub上比较出名的第三方框架AFNetworking、SDWebImage。</p>
+</li>
+<li><p>闭源库</p>
+<p>不公开源代码，只公开调用的接口，看不到具体的实现，是一个编译后的二进制文件。这种常见于一些公司的SDK包，比如高德地图SDK、环信即时通讯SDK等等。而闭源库又分为两类：静态库和动态库。本篇重点要讲的便是其中的静态库。</p>
+</li>
+</ul>
+</li>
+</ol>
+<p>3、静态库和动态库的存在形式和使用区别</p>
+<ol>
+<li><p>存在形式：</p>
+<ul>
+<li><p>静态库</p>
+<p>  以”.a”或者“.framework”为文件后缀名</p>
+</li>
+<li><p>动态库</p>
+<p>  以”.dylib”或者“.framework”为文件后缀名</p>
+</li>
+</ul>
+</li>
+<li><p>使用区别：</p>
+<ul>
+<li>静态库链接时会被完整的复制到可执行文件中，被多次使用就有多份拷贝。</li>
+<li>动态库链接时不复制，程序运行时由系统动态加载到内存，供程序调用。而且系统只加载一次，多个程序共用，节省内存。</li>
+</ul>
+</li>
+</ol>
+<h2 id="a文件静态库打包"><a href="#a文件静态库打包" class="headerlink" title=".a文件静态库打包"></a>.a文件静态库打包</h2><ol>
+<li><p>打开Xcode创建一个新的工程，这里以Xcode8为例，选择工程如下：</p>
+<p> <img src="http://ody22imht.bkt.clouddn.com/WX20170611-160303@2x.png" style="zoom:30%"></p>
+</li>
+<li><p>把需要打包的文件放入到根目录里面<strong>(注意是根目录)</strong></p>
+<ul>
+<li><p>自定生成的 <strong>.h</strong> 和 <strong>.m</strong> 文件可以删除</p>
+<p><img src="http://ody22imht.bkt.clouddn.com/WX20170611-160841@2x.png" style="zoom:30%"></p>
+</li>
+</ul>
+</li>
+<li><p>公开接口或者头文件供人调用</p>
+<ul>
+<li>targets-&gt;Build Phases-&gt;Copy Files-&gt;”+”你需要公开的头文件<br><img src="http://ody22imht.bkt.clouddn.com/WX20170611-161122@2x.png" style="zoom:30%"></li>
+</ul>
+</li>
+<li><p>静态库也分为 <strong>Debug</strong> 和 <strong>Release</strong> 这里我们可以直接选择 Release</p>
+<p> <img src="http://ody22imht.bkt.clouddn.com/WX20170611-161212@2x.png" style="zoom:30%"></p>
+</li>
+<li><p>选择编译设备(真机 或者 模拟器)</p>
+<ul>
+<li><p>注: 真机打包的只能在真机上运行, 模拟器打包的只能在模拟器上运行, 不然会报错, 可以在真机上打一个包, 模拟器上打一个包 然后合并.</p>
+<p><img src="http://ody22imht.bkt.clouddn.com/WX20170611-161949@2x.png" style="zoom:30%"></p>
+</li>
+</ul>
+</li>
+<li><p>此时需要配置的都已经完成按住 <strong>cmd+B</strong> 编译成功之后可以看到 <strong>Products</strong> 文件夹里面的 <strong>.a</strong> 文件从红色变成黑色(注: 可能不会改变颜色, 可以关闭 Xcode 重新打开, 此时颜色应该改变了,不改变也没有关系!!!)</p>
+<ul>
+<li><p>选中文件点击 <strong>Show in Finder</strong></p>
+<p><img src="http://ody22imht.bkt.clouddn.com/WX20170611-161808@2x.png" style="zoom:30%"></p>
+</li>
+</ul>
+</li>
+<li><p>静态库合并</p>
+<ul>
+<li><p>让工程在<strong>真机</strong>和<strong>模拟器</strong>上各运行一次, 然后点击 <strong>Show in Finder</strong> 选择文件夹 <strong>分栏展示</strong>, 可以看到文件的上一级有两个文件夹 <strong>Release-iphoneos</strong> 和 <strong>Release-iphonesimulator</strong><br><img src="http://ody22imht.bkt.clouddn.com/WX20170611-162630@2x.png" style="zoom:30%"></p>
+</li>
+<li><p>对这两个.a文件进行合并: 打开终端 在终端里面执行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">lipo -create 第一个.a文件的绝对路径 第二个.a文件的绝对路径 -output 最终的.a文件路径。</div></pre></td></tr></table></figure>
+<p>本文中使用的命令如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">lipo -create /Users/harvey/Library/Developer/Xcode/DerivedData/FMDB-ctegiztcjikewoeprxxtmryzetfa/Build/Products/Release-iphoneos/libFMDB.a /Users/harvey/Library/Developer/Xcode/DerivedData/FMDB-ctegiztcjikewoeprxxtmryzetfa/Build/Products/Release-iphonesimulator/libFMDB.a -output /Users/harvey/Desktop/libFMDB.a</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;这段时间公司需要把一个工程里的代码抽出来制作成静态库, 所以就研究了一下怎么打包静态库&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="iOS" scheme="http://yoursite.com/categories/iOS/"/>
+    
+    
+      <category term="iOS 功能" scheme="http://yoursite.com/tags/iOS-%E5%8A%9F%E8%83%BD/"/>
+    
+  </entry>
   
   <entry>
     <title>Swift-时间戳</title>
