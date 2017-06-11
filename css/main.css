@@ -283,8 +283,8 @@ a {
   word-wrap: break-word;
 }
 a:hover {
-  color: #495a80;
-  border-bottom-color: #495a80;
+  color: #222;
+  border-bottom-color: #222;
 }
 blockquote {
   margin: 0;
@@ -817,8 +817,8 @@ pre .javascript .function {
   padding: 0 20px;
   font-size: 14px;
   color: #fff;
-  background: #495a80;
-  border: 2px solid #495a80;
+  background: #222;
+  border: 2px solid #222;
   text-decoration: none;
   border-radius: 0;
   transition-property: background-color;
@@ -828,8 +828,8 @@ pre .javascript .function {
 }
 .btn:hover,
 .post-button .btn:hover {
-  border-color: #495a80;
-  color: #495a80;
+  border-color: #222;
+  color: #222;
   background: #fff;
 }
 .btn-bar {
@@ -881,7 +881,7 @@ pre .javascript .function {
 .pagination .prev:hover,
 .pagination .next:hover,
 .pagination .page-number:hover {
-  border-top-color: #495a80;
+  border-top-color: #222;
 }
 .pagination .space {
   padding: 0;
@@ -912,7 +912,7 @@ pre .javascript .function {
   .pagination .prev:hover,
   .pagination .next:hover,
   .pagination .page-number:hover {
-    border-bottom-color: #495a80;
+    border-bottom-color: #222;
   }
 }
 .comments {
@@ -933,7 +933,7 @@ pre .javascript .function {
   z-index: 1050;
   padding: 0 6px;
   width: 24px;
-  background: #495a80;
+  background: #222;
   font-size: 12px;
   opacity: 1;
   color: #fff;
@@ -966,7 +966,7 @@ pre .javascript .function {
 }
 .headband {
   height: 3px;
-  background: #495a80;
+  background: #222;
 }
 .site-meta {
   margin: 0;
@@ -981,12 +981,12 @@ pre .javascript .function {
   position: relative;
   display: inline-block;
   padding: 0 40px;
-  color: #495a80;
-  background: #495a80;
+  color: #222;
+  background: #222;
   border-bottom: none;
 }
 .brand:hover {
-  color: #495a80;
+  color: #222;
 }
 .logo {
   display: inline-block;
@@ -1079,7 +1079,7 @@ pre .javascript .function {
   transition-delay: 0s;
 }
 .menu .menu-item a:hover {
-  border-bottom-color: #495a80;
+  border-bottom-color: #222;
 }
 .menu .menu-item .fa {
   margin-right: 5px;
@@ -1289,7 +1289,7 @@ pre .javascript .function {
   border-bottom-color: #666;
 }
 .posts-collapse .post-header:hover::before {
-  background: #495a80;
+  background: #222;
 }
 .posts-collapse .post-meta {
   position: absolute;
@@ -1470,7 +1470,7 @@ pre .javascript .function {
   border-bottom: none;
 }
 .post-nav-item a:hover {
-  color: #495a80;
+  color: #222;
   border-bottom: none;
 }
 .post-nav-item a:active {
@@ -1653,7 +1653,7 @@ pre .javascript .function {
   width: 0;
   z-index: 1040;
   box-shadow: inset 0 2px 6px #000;
-  background: #495a80;
+  background: #222;
   -webkit-transform: translateZ(0);
 }
 .sidebar a {
@@ -1686,7 +1686,7 @@ pre .javascript .function {
   width: 14px;
   height: 14px;
   padding: 5px;
-  background: #495a80;
+  background: #222;
   line-height: 0;
   z-index: 1050;
   cursor: pointer;
@@ -1802,7 +1802,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #6fff50;
+  background: #ff78a1;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2668,7 +2668,7 @@ hr {
   position: relative;
   display: block;
   height: 2px;
-  background: #495a80;
+  background: #222;
 }
 @media (max-width: 767px) {
   .logo-line-before i,
@@ -2783,7 +2783,7 @@ hr {
   }
 }
 .posts-expand .post-title:hover:before {
-  background: #495a80;
+  background: #222;
 }
 .posts-expand .post-body img {
   margin: 0;
@@ -2827,7 +2827,7 @@ hr {
   }
 }
 .post-button a:hover {
-  border-bottom-color: #495a80;
+  border-bottom-color: #222;
 }
 .links-of-blogroll-inline .links-of-blogroll-item {
   display: inline-block;
@@ -2909,7 +2909,19 @@ code,
 pre {
   border: 1px solid #d6d6d6;
 }
+#header {
+  background-image: url("http://ody22imht.bkt.clouddn.com/backGround.jpg");
+  background-repeat: repeat;
+  background-attachment: fixed;
+  background-position: 50% 50%;
+}
 body {
+  background-image: url("http://ody22imht.bkt.clouddn.com/backGround.jpg");
+  background-repeat: repeat;
+  background-attachment: fixed;
+  background-position: 50% 50%;
+}
+#footer {
   background-image: url("http://ody22imht.bkt.clouddn.com/backGround.jpg");
   background-repeat: repeat;
   background-attachment: fixed;
