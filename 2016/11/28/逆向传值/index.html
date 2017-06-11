@@ -102,7 +102,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/11/28/逆向传值/index.html">
 <meta property="og:site_name" content="卢梦如的年轮">
 <meta property="og:description" content="用代理和闭包进行逆向传值">
-<meta property="og:updated_time" content="2017-06-08T06:10:26.000Z">
+<meta property="og:updated_time" content="2017-06-11T06:54:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="逆向传值">
 <meta name="twitter:description" content="用代理和闭包进行逆向传值">
@@ -379,43 +379,43 @@
 <a id="more"></a>
 <h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><ul>
 <li><p>在第二个页面写一个闭包(要传的值是字符串, 整型, 字典)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">typealias InputClosureType = (String, Int, [String: String]) -&gt; Void</div></pre></td></tr></table></figure>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typealias</span> <span class="type">InputClosureType</span> = (<span class="type">String</span>, <span class="type">Int</span>, [<span class="type">String</span>: <span class="type">String</span>]) -&gt; <span class="type">Void</span></div></pre></td></tr></table></figure>
 </li>
 </ul>
 <ul>
 <li><p>需要在第二个页面理创建一个闭包</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var backClosure: InputClosureType?</div></pre></td></tr></table></figure>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> backClosure: <span class="type">InputClosureType</span>?</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <ul>
 <li><p>在点击事件里执行闭包</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">  if self.backClosure != nil &#123;</div><div class="line">            </div><div class="line">       self.backClosure?(&quot;卢梦如&quot;, 24, [&quot;name&quot;: &quot;卢梦如&quot;])</div><div class="line">            </div><div class="line">   &#125;</div><div class="line">        </div><div class="line">  ```	</div><div class="line"></div><div class="line">* 在第一个页面里创建第二个页面的实例的地方对闭包传值</div></pre></td></tr></table></figure>
-<p>secondVC.backClosure = {</p>
-<pre><code>(name: String, age: Int, dictionary: [String: String]) -&gt; Void in
-
-// 打印传过来的数据
-
-print(&quot;\(name) is \(age) years&quot;, dictionary)
-</code></pre><p>}</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">        </div><div class="line">        </div><div class="line">## 代理</div><div class="line"></div><div class="line">* 在第二个页面里 声明一个代理</div></pre></td></tr></table></figure>
-<p>protocol SecondViewControllerDelegate: NSObjectProtocol {</p>
-<pre><code>func backValue(string: String, value: Int)
-</code></pre><p>  }</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">		</div><div class="line">* 定义代理</div></pre></td></tr></table></figure>
-<p>var delegate: SecondViewControllerDelegate?</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">		</div><div class="line">* 在点击事件里执行代理</div></pre></td></tr></table></figure>
-<p>if self.delegate != nil {</p>
-<pre><code>delegate?.backValue(string: &quot;卢梦如&quot;, value: 24)
-</code></pre><p>}</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">		       </div><div class="line">* 在第一个页面里面遵守代理, 然后设置代理</div></pre></td></tr></table></figure>
-<p>secondVC.delegate = self</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">		</div><div class="line">* 执行代理的方法</div></pre></td></tr></table></figure>
-<p>func backValue(string: String, value: Int) {</p>
-<pre><code>// 打印传入的数据
-
-print(&quot;\(string) is \(value)&quot;)
-</code></pre><p> }</p>
-<p>```</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> <span class="keyword">self</span>.backClosure != <span class="literal">nil</span> &#123;</div><div class="line">          </div><div class="line">   <span class="keyword">self</span>.backClosure?(<span class="string">"卢梦如"</span>, <span class="number">24</span>, [<span class="string">"name"</span>: <span class="string">"卢梦如"</span>])</div><div class="line">          </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>在第一个页面里创建第二个页面的实例的地方对闭包传值</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">secondVC.backClosure = &#123;</div><div class="line">          </div><div class="line">      (name: <span class="type">String</span>, age: <span class="type">Int</span>, dictionary: [<span class="type">String</span>: <span class="type">String</span>]) -&gt; <span class="type">Void</span> <span class="keyword">in</span></div><div class="line">          </div><div class="line">      <span class="comment">// 打印传过来的数据</span></div><div class="line">          </div><div class="line">      <span class="built_in">print</span>(<span class="string">"<span class="subst">\(name)</span> is <span class="subst">\(age)</span> years"</span>, dictionary)</div><div class="line">          </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="代理"><a href="#代理" class="headerlink" title="代理"></a>代理</h2><ul>
+<li><p>在第二个页面里 声明一个代理</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">SecondViewControllerDelegate</span>: <span class="title">NSObjectProtocol</span> </span>&#123;</div><div class="line">  </div><div class="line">  <span class="function"><span class="keyword">func</span> <span class="title">backValue</span><span class="params">(string: String, value: Int)</span></span></div><div class="line">  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>定义代理</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> delegate: <span class="type">SecondViewControllerDelegate</span>?</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>在点击事件里执行代理</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">if self.delegate != nil &#123;</div><div class="line">          </div><div class="line">   delegate?.backValue(string: &quot;卢梦如&quot;, value: 24)</div><div class="line">          </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>在第一个页面里面遵守代理, 然后设置代理</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">secondVC.delegate = <span class="keyword">self</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>执行代理的方法</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">backValue</span><span class="params">(string: String, value: Int)</span></span> &#123;</div><div class="line">      </div><div class="line">     <span class="comment">// 打印传入的数据</span></div><div class="line">      </div><div class="line">     <span class="built_in">print</span>(<span class="string">"<span class="subst">\(string)</span> is <span class="subst">\(value)</span>"</span>)</div><div class="line">      </div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 </ul>
 
@@ -717,7 +717,7 @@ print(&quot;\(string) is \(value)&quot;)
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#闭包"><span class="nav-number">1.</span> <span class="nav-text">闭包</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#闭包"><span class="nav-number">1.</span> <span class="nav-text">闭包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代理"><span class="nav-number">2.</span> <span class="nav-text">代理</span></a></li></ol></div>
             
 
           </div>
