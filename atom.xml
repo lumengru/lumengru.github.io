@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-06-11T09:22:35.000Z</updated>
+  <updated>2017-06-11T09:24:14.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2017/06/11/iOS-%E9%9D%99%E6%80%81%E5%BA%93%E7%9A%84%E6%89%93%E5%8C%85/"/>
     <id>http://yoursite.com/2017/06/11/iOS-静态库的打包/</id>
     <published>2017-06-11T07:47:28.000Z</published>
-    <updated>2017-06-11T09:22:35.000Z</updated>
+    <updated>2017-06-11T09:24:14.000Z</updated>
     
     <content type="html"><![CDATA[<p>这段时间公司需要把一个工程里的代码抽出来制作成静态库, 所以就研究了一下怎么打包静态库</p>
 <a id="more"></a>
@@ -72,9 +72,12 @@
 </li>
 <li><p>公开接口或者头文件供人调用</p>
 <ul>
-<li>targets-&gt;Build Phases-&gt;Copy Files-&gt;”+”你需要公开的头文件<br><img src="http://ody22imht.bkt.clouddn.com/WX20170611-161122@2x.png" style="zoom:30%"></li>
+<li>targets-&gt;Build Phases-&gt;Copy Files-&gt;”+”你需要公开的头文件</li>
+<li><img src="http://ody22imht.bkt.clouddn.com/WX20170611-161122@2x.png" style="zoom:30%"></li>
 </ul>
 </li>
+</ol>
+<ol>
 <li><p>静态库也分为 <strong>Debug</strong> 和 <strong>Release</strong> 这里我们可以直接选择 Release</p>
 <p> <img src="http://ody22imht.bkt.clouddn.com/WX20170611-161212@2x.png" style="zoom:30%"></p>
 </li>
