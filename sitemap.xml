@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2016/09/22/Hexo-Github-pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</loc>
+    
+    <lastmod>2017-06-11T06:29:21.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2017/05/31/Swift-%E6%97%B6%E9%97%B4%E6%88%B3/</loc>
     
     <lastmod>2017-06-11T05:50:23.000Z</lastmod>
@@ -54,13 +61,6 @@
     <loc>http://yoursite.com/2016/11/22/UITextView/</loc>
     
     <lastmod>2017-06-09T02:51:10.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2016/09/22/Hexo-Github-pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</loc>
-    
-    <lastmod>2017-06-08T08:16:15.000Z</lastmod>
     
   </url>
   
