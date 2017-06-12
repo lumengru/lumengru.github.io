@@ -325,12 +325,11 @@
     <link href="http://yoursite.com/2016/11/28/%E9%80%86%E5%90%91%E4%BC%A0%E5%80%BC/"/>
     <id>http://yoursite.com/2016/11/28/逆向传值/</id>
     <published>2016-11-28T14:04:13.000Z</published>
-    <updated>2017-06-12T08:40:48.000Z</updated>
+    <updated>2017-06-12T08:42:08.000Z</updated>
     
     <content type="html"><![CDATA[<p>用<strong>代理</strong>和<strong>闭包</strong>进行逆向传值</p>
 <a id="more"></a>
-<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><p><a href="http://www.zhulogic.com" target="_blank" rel="external">住逻辑</a></p>
-<ul>
+<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><ul>
 <li><p>在第二个页面写一个闭包(要传的值是字符串, 整型, 字典)</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typealias</span> <span class="type">InputClosureType</span> = (<span class="type">String</span>, <span class="type">Int</span>, [<span class="type">String</span>: <span class="type">String</span>]) -&gt; <span class="type">Void</span></div></pre></td></tr></table></figure>
 </li>
