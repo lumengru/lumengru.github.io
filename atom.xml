@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-06-12T05:18:00.000Z</updated>
+  <updated>2017-06-12T05:21:16.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,9 +20,9 @@
     <link href="http://yoursite.com/2017/06/12/Swift-%E6%89%A9%E5%B1%95%E6%96%B9%E6%B3%95/"/>
     <id>http://yoursite.com/2017/06/12/Swift-扩展方法/</id>
     <published>2017-06-12T02:44:44.000Z</published>
-    <updated>2017-06-12T05:18:00.000Z</updated>
+    <updated>2017-06-12T05:21:16.000Z</updated>
     
-    <content type="html"><![CDATA[<p>在使用Swfit的过程中把各种方法扩展起来,方便用于开发,<strong>Swift3.0</strong>版本 <a href="https://github.com/lumengru/Swift" target="_blank" rel="external">Swift-扩展方法</a></p>
+    <content type="html"><![CDATA[<p>在使用Swfit的过程中把各种方法扩展起来,方便用于开发,<strong>Swift3.0</strong>版本, 文件下载地址 <a href="https://github.com/lumengru/Swift" target="_blank" rel="external">Swift-扩展方法</a></p>
 <a id="more"></a>
 <h2 id="扩展的写法"><a href="#扩展的写法" class="headerlink" title="扩展的写法"></a>扩展的写法</h2><ul>
 <li><p>因为Swift 不需要在使用相应的头文件的时候引入头文件所以可以把这些扩展方法写到同一个文件中,这个是和OC的区别, 例子:</p>
@@ -77,7 +77,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;在使用Swfit的过程中把各种方法扩展起来,方便用于开发,&lt;strong&gt;Swift3.0&lt;/strong&gt;版本 &lt;a href=&quot;https://github.com/lumengru/Swift&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Swift-扩展方法&lt;/a&gt;&lt;/p&gt;
+      &lt;p&gt;在使用Swfit的过程中把各种方法扩展起来,方便用于开发,&lt;strong&gt;Swift3.0&lt;/strong&gt;版本, 文件下载地址 &lt;a href=&quot;https://github.com/lumengru/Swift&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Swift-扩展方法&lt;/a&gt;&lt;/p&gt;
     
     </summary>
     
