@@ -1802,7 +1802,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #13ffff;
+  background: #fff1a6;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2909,7 +2909,7 @@ code,
 pre {
   border: 1px solid #d6d6d6;
 }
-#header {
+header {
   background-image: url("http://ody22imht.bkt.clouddn.com/backGround.jpg");
   background-repeat: repeat;
   background-attachment: fixed;
@@ -2921,7 +2921,7 @@ body {
   background-attachment: fixed;
   background-position: 50% 50%;
 }
-#footer {
+footer {
   background-image: url("http://ody22imht.bkt.clouddn.com/backGround.jpg");
   background-repeat: repeat;
   background-attachment: fixed;

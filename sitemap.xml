@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2017/06/12/Swift-%E6%89%A9%E5%B1%95%E6%96%B9%E6%B3%95/</loc>
+    
+    <lastmod>2017-06-12T11:35:45.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2016/11/28/UIScrollView/</loc>
     
     <lastmod>2017-06-12T08:57:36.000Z</lastmod>
@@ -19,13 +26,6 @@
     <loc>http://yoursite.com/about/index.html</loc>
     
     <lastmod>2017-06-12T08:42:25.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/06/12/Swift-%E6%89%A9%E5%B1%95%E6%96%B9%E6%B3%95/</loc>
-    
-    <lastmod>2017-06-12T08:00:23.000Z</lastmod>
     
   </url>
   
