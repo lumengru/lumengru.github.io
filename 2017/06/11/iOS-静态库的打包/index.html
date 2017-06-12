@@ -111,12 +111,13 @@
 <meta property="og:image" content="http://ody22imht.bkt.clouddn.com/WX20170611-162314@2x.png">
 <meta property="og:image" content="http://ody22imht.bkt.clouddn.com/WX20170611-162630@2x.png">
 <meta property="og:image" content="http://ody22imht.bkt.clouddn.com/WX20170611-173037@2x.png">
+<meta property="og:image" content="http://ody22imht.bkt.clouddn.com/WX20170612-091729@2x.png">
 <meta property="og:image" content="http://ody22imht.bkt.clouddn.com/WX20170611-173406@2x.png">
 <meta property="og:image" content="http://ody22imht.bkt.clouddn.com/WX20170611-161212@2x.png">
 <meta property="og:image" content="http://ody22imht.bkt.clouddn.com/WX20170611-174825@2x.png">
 <meta property="og:image" content="http://ody22imht.bkt.clouddn.com/WX20170611-173725@2x.png">
 <meta property="og:image" content="http://ody22imht.bkt.clouddn.com/WX20170611-174032@2x.png">
-<meta property="og:updated_time" content="2017-06-11T09:52:57.000Z">
+<meta property="og:updated_time" content="2017-06-12T01:32:33.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS-静态库的打包">
 <meta name="twitter:description" content="这段时间公司需要把一个工程里的代码抽出来制作成静态库, 所以就研究了一下怎么打包静态库">
@@ -480,10 +481,13 @@
 </ul>
 </li>
 </ol>
-<h2 id="frameworke文件静态库打包"><a href="#frameworke文件静态库打包" class="headerlink" title=".frameworke文件静态库打包"></a>.frameworke文件静态库打包</h2><ol>
-<li><p>和 <strong>.a</strong> 文件的创建一样 直接把需要打包的代码放到根目录里面, 不同的是 <strong>自动生成的.h</strong> 文件不用删除<br><img src="http://ody22imht.bkt.clouddn.com/WX20170611-173037@2x.png" style="zoom:30%"></p>
+<h2 id="framework文件静态库打包"><a href="#framework文件静态库打包" class="headerlink" title=".framework文件静态库打包"></a>.framework文件静态库打包</h2><ol>
+<li><p>和 <strong>.a</strong> 文件的创建一样 直接把需要打包的代码放到根目录里面, 不同的是 <strong>自动生成的.h</strong> 文件不用删除 (注: 可以把需要暴露出来的多个头文件放到这个<strong>.h</strong>文件中,到时只要引用这一次头文件就OK了)<br><img src="http://ody22imht.bkt.clouddn.com/WX20170611-173037@2x.png" style="zoom:30%"></p>
 </li>
-<li><p>暴露头文件,和 <strong>.a</strong> 文件不同的是 <strong>.frameworke</strong>文件是在 <strong>Headers</strong> 里面暴露出来</p>
+<li><p>把需要暴露出来的头文件写入到<strong>.h</strong>文件里面,写法<strong>&lt;工程名/头文件.h&gt;</strong></p>
+<p><img src="http://ody22imht.bkt.clouddn.com/WX20170612-091729@2x.png" style="zoom:30%"></p>
+</li>
+<li><p>暴露头文件,和 <strong>.a</strong> 文件不同的是 <strong>.framework</strong>文件是在 <strong>Headers</strong> 里面暴露出来</p>
 <p><img src="http://ody22imht.bkt.clouddn.com/WX20170611-173406@2x.png" style="zoom:30%"></p>
 </li>
 <li><p>和 <strong>.a</strong>文件一样,<strong>.frmeworke</strong>静态库也分为 <strong>Debug</strong> 和 <strong>Release</strong> 这里我们可以直接选择 Release</p>
@@ -496,13 +500,27 @@
 </li>
 </ul>
 </li>
-<li><p>和<strong>.a</strong>文件一样, <strong>.frameworke</strong> 也分为真机运行 和模拟器运行, 所以 真机运行一次, 模拟器运行一次, 然后合并</p>
+<li><p>和<strong>.a</strong>文件一样, <strong>.framework</strong> 也分为真机运行 和模拟器运行, 所以 真机运行一次, 模拟器运行一次, 然后合并</p>
 <p><img src="http://ody22imht.bkt.clouddn.com/WX20170611-173725@2x.png" style="zoom:30%"></p>
 </li>
-<li><p>双击<strong>.frameworke</strong> 文件,可以看到</p>
+<li><p>双击<strong>.framework</strong> 文件,可以看到</p>
 <p><img src="http://ody22imht.bkt.clouddn.com/WX20170611-174032@2x.png" style="zoom:30%"></p>
 </li>
-<li><p>把SDK合并完成之后,直接替换掉<strong>.frameworke</strong> 文件里面的SDK文件就可以了</p>
+<li><p>把SDK合并完成之后,直接替换掉<strong>.framework</strong> 文件里面的SDK文件就可以了</p>
+</li>
+</ol>
+<h2 id="静态库的使用"><a href="#静态库的使用" class="headerlink" title="静态库的使用"></a>静态库的使用</h2><ol>
+<li><p><strong>.a</strong>静态库的使用</p>
+<ul>
+<li>把打包生成的 <strong>.a</strong> 文件 和 暴露出来的头文件 及 使用的其他资源(例: 图片, 音频…) 拖入到工程中, 然后在使用的地方导入暴露出来的相应的头文件即可.</li>
+</ul>
+</li>
+<li><p><strong>.framework</strong> 静态库的使用</p>
+<ul>
+<li><p>直接把打包好的静态块拖入进工程里面, 在相应的地方引入头文件,用尖括号包起来 例:</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#import <span class="meta-string">&lt;LinkPayLoanSDK/LinkPayLoanSDK.h&gt;</span></span></div></pre></td></tr></table></figure>
+</li>
+</ul>
 </li>
 </ol>
 <h2 id="Bundel-文件"><a href="#Bundel-文件" class="headerlink" title="Bundel 文件"></a>Bundel 文件</h2><h3 id="Bundel文件是什么"><a href="#Bundel文件是什么" class="headerlink" title="Bundel文件是什么"></a>Bundel文件是什么</h3><ol>
@@ -512,6 +530,8 @@
 </li>
 </ol>
 <h3 id="Bundle文件制作"><a href="#Bundle文件制作" class="headerlink" title="Bundle文件制作"></a>Bundle文件制作</h3><p>直接在桌面新建一个文件夹然后把后缀名改为 <strong>.bundle</strong> 就可以了, 向里面放文件的时候直接双击打开,然后把文件拖入进去</p>
+<h3 id="Bundle文件使用"><a href="#Bundle文件使用" class="headerlink" title="Bundle文件使用"></a>Bundle文件使用</h3><p>把生成的<strong>.bundle</strong>文件拖入工程中, 使用规则: <strong>Bundle文件名称.bundle/资源名称</strong>,例:</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[<span class="built_in">UIImage</span> imageNamed:<span class="string">@"LinkPayBundle.bundle/LinkPaySDKback"</span>]</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -807,7 +827,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一些概念的补充"><span class="nav-number">1.</span> <span class="nav-text">一些概念的补充</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#a文件静态库打包"><span class="nav-number">2.</span> <span class="nav-text">.a文件静态库打包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#frameworke文件静态库打包"><span class="nav-number">3.</span> <span class="nav-text">.frameworke文件静态库打包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bundel-文件"><span class="nav-number">4.</span> <span class="nav-text">Bundel 文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Bundel文件是什么"><span class="nav-number">4.1.</span> <span class="nav-text">Bundel文件是什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bundle文件制作"><span class="nav-number">4.2.</span> <span class="nav-text">Bundle文件制作</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一些概念的补充"><span class="nav-number">1.</span> <span class="nav-text">一些概念的补充</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#a文件静态库打包"><span class="nav-number">2.</span> <span class="nav-text">.a文件静态库打包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#framework文件静态库打包"><span class="nav-number">3.</span> <span class="nav-text">.framework文件静态库打包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#静态库的使用"><span class="nav-number">4.</span> <span class="nav-text">静态库的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bundel-文件"><span class="nav-number">5.</span> <span class="nav-text">Bundel 文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Bundel文件是什么"><span class="nav-number">5.1.</span> <span class="nav-text">Bundel文件是什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bundle文件制作"><span class="nav-number">5.2.</span> <span class="nav-text">Bundle文件制作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bundle文件使用"><span class="nav-number">5.3.</span> <span class="nav-text">Bundle文件使用</span></a></li></ol></li></ol></div>
             
 
           </div>
