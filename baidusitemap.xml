@@ -3,6 +3,26 @@
 
 
     
+  <url>
+    <loc>http://yoursite.com/2016/11/28/%E9%80%86%E5%90%91%E4%BC%A0%E5%80%BC/</loc>
+    <lastmod>2017-06-12T08:40:48.000Z</lastmod>
+    <data>
+        <display>
+        <title>逆向传值</title>
+        <pubTime>2016-11-28T14:04:13.000Z</pubTime>
+        
+        <tag>Swift 功能</tag>
+         
+         
+           
+             
+              <breadCrumb title="Swift" url="http://yoursite.com/categories/Swift/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
     
   <url>
     <loc>http://yoursite.com/2017/06/12/Swift-%E6%89%A9%E5%B1%95%E6%96%B9%E6%B3%95/</loc>
@@ -58,26 +78,6 @@
            
              
               <breadCrumb title="iOS" url="http://yoursite.com/categories/iOS/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2016/11/28/%E9%80%86%E5%90%91%E4%BC%A0%E5%80%BC/</loc>
-    <lastmod>2017-06-11T06:54:45.000Z</lastmod>
-    <data>
-        <display>
-        <title>逆向传值</title>
-        <pubTime>2016-11-28T14:04:13.000Z</pubTime>
-        
-        <tag>Swift 功能</tag>
-         
-         
-           
-             
-              <breadCrumb title="Swift" url="http://yoursite.com/categories/Swift/"/>
           
         </display>
     </data>
