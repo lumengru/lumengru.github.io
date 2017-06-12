@@ -386,6 +386,135 @@
   </entry>
   
   <entry>
+    <title>UIScrollView</title>
+    <link href="http://yoursite.com/2016/11/28/UIScrollView/"/>
+    <id>http://yoursite.com/2016/11/28/UIScrollView/</id>
+    <published>2016-11-28T12:30:01.000Z</published>
+    <updated>2017-06-12T08:57:36.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>用Swift写的UIScrollView文本</p>
+<a id="more"></a>
+<h2 id="UIScrollView"><a href="#UIScrollView" class="headerlink" title="UIScrollView"></a>UIScrollView</h2><ul>
+<li><p>创建 UIScrollView</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> scrollView = <span class="type">UIScrollView</span>(frame: <span class="keyword">self</span>.view.bounds)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>设置 UIScrollView 的大小</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scrollView.contentSize = <span class="type">CGSize</span>(width: <span class="keyword">self</span>.view.frame.width * <span class="number">4</span>, height: <span class="keyword">self</span>.view.frame.height)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>设置 UIScrollView 的偏移位置</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scrollView.contentOffset = <span class="type">CGPoint</span>(x: <span class="keyword">self</span>.view.frame.width, y: <span class="number">0</span>)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>设置是否反弹</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scrollView.bounces = <span class="literal">true</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>设置是否分页</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scrollView.isPagingEnabled = <span class="literal">true</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>设置是否滚动</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scrollView.isScrollEnabled = <span class="literal">true</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>设置 <strong>indicator</strong>( 滚动条的颜色 ) 风格</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scrollView.indicatorStyle = <span class="type">UIScrollViewIndicatorStyle</span>.white</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>设置 内容的边缘和 Indicators 边缘</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scrollView.contentInset = <span class="type">UIEdgeInsetsMake</span>(<span class="number">0</span>, <span class="number">50</span>, <span class="number">0</span>, <span class="number">0</span>)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>手势放大缩小</p>
+<ul>
+<li><strong>.minimumZoomScale</strong> = 0.1  最小比例</li>
+<li><strong>.maximumZoomScale</strong> = 3    最大比例</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">scrollView.minimumZoomScale = <span class="number">0.1</span></div><div class="line"></div><div class="line">scrollView.maximumZoomScale = <span class="number">3</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>设置代理</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scrollView.delegate = <span class="keyword">self</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>添加到父视图</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">self</span>.view.addSubview(scrollView)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="代理方法"><a href="#代理方法" class="headerlink" title="代理方法"></a>代理方法</h2><ul>
+<li><p>返回一个放大或者缩小的视图</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">viewForZooming</span><span class="params">(<span class="keyword">in</span> scrollView: UIScrollView)</span></span> -&gt; <span class="type">UIView</span>? &#123;</div><div class="line">   </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>开始放大或者缩小</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">scrollViewWillBeginZooming</span><span class="params">(<span class="number">_</span> scrollView: UIScrollView, with view: UIView?)</span></span> &#123;</div><div class="line">   </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>缩放结束时</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">scrollViewDidEndZooming</span><span class="params">(<span class="number">_</span> scrollView: UIScrollView, with view: UIView?, atScale scale: CGFloat)</span></span> &#123;</div><div class="line">     </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>视图已经放大或缩小</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">scrollViewDidZoom</span><span class="params">(<span class="number">_</span> scrollView: UIScrollView)</span></span> &#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>滑动到顶部时调用该方法</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">scrollViewDidScrollToTop</span><span class="params">(<span class="number">_</span> scrollView: UIScrollView)</span></span> &#123;</div><div class="line">     </div><div class="line">   	<span class="built_in">print</span>(<span class="string">"顶部"</span>)</div><div class="line">     </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>正在滑动</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">scrollViewDidScroll</span><span class="params">(<span class="number">_</span> scrollView: UIScrollView)</span></span> &#123;</div><div class="line">     </div><div class="line">   	<span class="built_in">print</span>(<span class="string">"正在滑动..."</span>)</div><div class="line">     </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>开始拖动</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">scrollViewWillBeginDragging</span><span class="params">(<span class="number">_</span> scrollView: UIScrollView)</span></span> &#123;</div><div class="line">     </div><div class="line">   	<span class="built_in">print</span>(<span class="string">"开始拖动"</span>)</div><div class="line">     </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>结束拖动</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">scrollViewDidEndDragging</span><span class="params">(<span class="number">_</span> scrollView: UIScrollView, willDecelerate decelerate: Bool)</span></span> &#123;</div><div class="line">     </div><div class="line">   	<span class="built_in">print</span>(<span class="string">"结束拖动"</span>)</div><div class="line">     </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>开始减速</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">scrollViewWillBeginDecelerating</span><span class="params">(<span class="number">_</span> scrollView: UIScrollView)</span></span> &#123;</div><div class="line">     </div><div class="line">   	<span class="built_in">print</span>(<span class="string">"开始减速..."</span>)</div><div class="line">     </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>减速停止</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">scrollViewDidEndDecelerating</span><span class="params">(<span class="number">_</span> scrollView: UIScrollView)</span></span> &#123;</div><div class="line">     </div><div class="line">   	<span class="built_in">print</span>(<span class="string">"减速停止"</span>)</div><div class="line">     </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;用Swift写的UIScrollView文本&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Swift" scheme="http://yoursite.com/categories/Swift/"/>
+    
+    
+      <category term="Swift 控件" scheme="http://yoursite.com/tags/Swift-%E6%8E%A7%E4%BB%B6/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Hexo + Github pages 搭建个人博客</title>
     <link href="http://yoursite.com/2016/09/22/Hexo-Github-pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
     <id>http://yoursite.com/2016/09/22/Hexo-Github-pages-搭建个人博客/</id>
