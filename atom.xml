@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-06-12T05:38:06.000Z</updated>
+  <updated>2017-06-12T08:00:23.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2017/06/12/Swift-%E6%89%A9%E5%B1%95%E6%96%B9%E6%B3%95/"/>
     <id>http://yoursite.com/2017/06/12/Swift-扩展方法/</id>
     <published>2017-06-12T02:44:44.000Z</published>
-    <updated>2017-06-12T05:38:06.000Z</updated>
+    <updated>2017-06-12T08:00:23.000Z</updated>
     
     <content type="html"><![CDATA[<p>在使用Swfit的过程中把各种方法扩展起来,方便用于开发,<strong>Swift3.0</strong>版本</p>
 <a id="more"></a>
@@ -29,7 +29,7 @@
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 扩展 String 类型</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">extension</span> <span class="title">String</span> </span>&#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 扩展UILabel</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">extension</span> <span class="title">UILabel</span> </span>&#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="String的扩展方法"><a href="#String的扩展方法" class="headerlink" title="String的扩展方法"></a>String的扩展方法</h2><ol>
+<h2 id="扩展String"><a href="#扩展String" class="headerlink" title="扩展String"></a>扩展String</h2><ol>
 <li><p>获取字符串的高度</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">getTextHeight</span><span class="params">(font:CGFloat,width:CGFloat)</span></span> -&gt; <span class="type">CGFloat</span> &#123;</div><div class="line">     </div><div class="line">     <span class="keyword">let</span> normalText = <span class="keyword">self</span> <span class="keyword">as</span> <span class="type">NSString</span></div><div class="line">     </div><div class="line">     <span class="keyword">let</span> size = <span class="type">CGSize</span>(width: width, height: <span class="type">CGFloat</span>(<span class="type">MAXFLOAT</span>))</div><div class="line">     </div><div class="line">     <span class="keyword">let</span> fontS = <span class="type">UIFont</span>.systemFont(ofSize: font)</div><div class="line">     </div><div class="line">     <span class="keyword">let</span> dic = <span class="type">NSDictionary</span>(object: fontS, forKey: <span class="type">NSFontAttributeName</span> <span class="keyword">as</span> <span class="type">NSCopying</span>)</div><div class="line">     </div><div class="line">     <span class="keyword">let</span> stringSize = normalText.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: dic <span class="keyword">as</span>? [<span class="type">String</span> : <span class="type">AnyObject</span>], context:<span class="literal">nil</span>).size</div><div class="line">     </div><div class="line">     <span class="keyword">return</span> stringSize.height</div><div class="line">     </div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
