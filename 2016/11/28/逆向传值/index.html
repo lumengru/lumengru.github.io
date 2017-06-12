@@ -392,7 +392,7 @@
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> <span class="keyword">self</span>.backClosure != <span class="literal">nil</span> &#123;</div><div class="line">          </div><div class="line">   <span class="keyword">self</span>.backClosure?(<span class="string">"卢梦如"</span>, <span class="number">24</span>, [<span class="string">"name"</span>: <span class="string">"卢梦如"</span>])</div><div class="line">          </div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 <li><p>在第一个页面里创建第二个页面的实例的地方对闭包传值</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">secondVC.backClosure = &#123;</div><div class="line">          </div><div class="line">      (name: <span class="type">String</span>, age: <span class="type">Int</span>, dictionary: [<span class="type">String</span>: <span class="type">String</span>]) -&gt; <span class="type">Void</span> <span class="keyword">in</span></div><div class="line">          </div><div class="line">      <span class="comment">// 打印传过来的数据</span></div><div class="line">          </div><div class="line">      <span class="built_in">print</span>(<span class="string">"\(name) is \(age) years"</span>, dictionary)</div><div class="line">          </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">secondVC.backClosure = &#123;</div><div class="line">          </div><div class="line">      (name: <span class="type">String</span>, age: <span class="type">Int</span>, dictionary: [<span class="type">String</span>: <span class="type">String</span>]) -&gt; <span class="type">Void</span> <span class="keyword">in</span></div><div class="line">          </div><div class="line">      <span class="comment">// 打印传过来的数据</span></div><div class="line">          </div><div class="line">      <span class="built_in">print</span>(<span class="string">"<span class="subst">\(name)</span> is <span class="subst">\(age)</span> years"</span>, dictionary)</div><div class="line">          </div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <h2 id="代理"><a href="#代理" class="headerlink" title="代理"></a>代理</h2><ul>
@@ -415,7 +415,7 @@
 </ul>
 <ul>
 <li><p>执行代理的方法</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">backValue</span><span class="params">(string: String, value: Int)</span></span> &#123;</div><div class="line">      </div><div class="line">     <span class="comment">// 打印传入的数据</span></div><div class="line">      </div><div class="line">     <span class="built_in">print</span>(<span class="string">"\(string) is \(value)"</span>)</div><div class="line">      </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">backValue</span><span class="params">(string: String, value: Int)</span></span> &#123;</div><div class="line">      </div><div class="line">     <span class="comment">// 打印传入的数据</span></div><div class="line">      </div><div class="line">     <span class="built_in">print</span>(<span class="string">"<span class="subst">\(string)</span> is <span class="subst">\(value)</span>"</span>)</div><div class="line">      </div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 </ul>
 
@@ -572,7 +572,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -583,7 +583,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -594,7 +594,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

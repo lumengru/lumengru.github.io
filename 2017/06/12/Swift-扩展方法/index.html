@@ -1,0 +1,919 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Swift 功能," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="卢梦如的年轮" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="在使用Swfit的过程中把各种方法扩展起来,方便用于开发,Swift3.0版本">
+<meta name="keywords" content="Swift 功能">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Swift-扩展方法">
+<meta property="og:url" content="http://yoursite.com/2017/06/12/Swift-扩展方法/index.html">
+<meta property="og:site_name" content="卢梦如的年轮">
+<meta property="og:description" content="在使用Swfit的过程中把各种方法扩展起来,方便用于开发,Swift3.0版本">
+<meta property="og:updated_time" content="2017-06-12T03:55:07.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Swift-扩展方法">
+<meta name="twitter:description" content="在使用Swfit的过程中把各种方法扩展起来,方便用于开发,Swift3.0版本">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/06/12/Swift-扩展方法/"/>
+
+
+
+
+
+  <title>Swift-扩展方法 | 卢梦如的年轮</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+    
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">卢梦如的年轮</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">心血来潮</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/12/Swift-扩展方法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="卢梦如">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/头像.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="卢梦如的年轮">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Swift-扩展方法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-12T10:44:44+08:00">
+                2017-06-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a class="cloud-tie-join-count" href="/2017/06/12/Swift-扩展方法/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count join-count" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在使用Swfit的过程中把各种方法扩展起来,方便用于开发,<strong>Swift3.0</strong>版本</p>
+<a id="more"></a>
+<h2 id="扩展的写法"><a href="#扩展的写法" class="headerlink" title="扩展的写法"></a>扩展的写法</h2><ul>
+<li><p>因为Swift 不需要在使用相应的头文件的时候引入头文件所以可以把这些扩展方法写到同一个文件中,这个是和OC的区别, 例子:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 扩展 String 类型</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">extension</span> <span class="title">String</span> </span>&#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 扩展UILabel</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">extension</span> <span class="title">UILabel</span> </span>&#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="String的扩展方法"><a href="#String的扩展方法" class="headerlink" title="String的扩展方法"></a>String的扩展方法</h2><ol>
+<li><p>获取字符串的高度</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">getTextHeight</span><span class="params">(font:CGFloat,width:CGFloat)</span></span> -&gt; <span class="type">CGFloat</span> &#123;</div><div class="line">     </div><div class="line">     <span class="keyword">let</span> normalText = <span class="keyword">self</span> <span class="keyword">as</span> <span class="type">NSString</span></div><div class="line">     </div><div class="line">     <span class="keyword">let</span> size = <span class="type">CGSize</span>(width: width, height: <span class="type">CGFloat</span>(<span class="type">MAXFLOAT</span>))</div><div class="line">     </div><div class="line">     <span class="keyword">let</span> fontS = <span class="type">UIFont</span>.systemFont(ofSize: font)</div><div class="line">     </div><div class="line">     <span class="keyword">let</span> dic = <span class="type">NSDictionary</span>(object: fontS, forKey: <span class="type">NSFontAttributeName</span> <span class="keyword">as</span> <span class="type">NSCopying</span>)</div><div class="line">     </div><div class="line">     <span class="keyword">let</span> stringSize = normalText.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: dic <span class="keyword">as</span>? [<span class="type">String</span> : <span class="type">AnyObject</span>], context:<span class="literal">nil</span>).size</div><div class="line">     </div><div class="line">     <span class="keyword">return</span> stringSize.height</div><div class="line">     </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>获取字符串的长度</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">getTexWidth</span><span class="params">(font:CGFloat,height:CGFloat)</span></span> -&gt; <span class="type">CGFloat</span> &#123;</div><div class="line">     </div><div class="line">     <span class="keyword">let</span> normalText: <span class="type">NSString</span> = <span class="keyword">self</span> <span class="keyword">as</span> <span class="type">NSString</span></div><div class="line">     </div><div class="line">     <span class="keyword">let</span> size = <span class="type">CGSize</span>(width: <span class="type">CGFloat</span>(<span class="type">MAXFLOAT</span>), height: height)</div><div class="line">     </div><div class="line">     <span class="keyword">let</span> fontS = <span class="type">UIFont</span>.systemFont(ofSize: font)</div><div class="line">     </div><div class="line">     <span class="keyword">let</span> dic = <span class="type">NSDictionary</span>(object: fontS, forKey: <span class="type">NSFontAttributeName</span> <span class="keyword">as</span> <span class="type">NSCopying</span>)</div><div class="line">     </div><div class="line">     <span class="keyword">let</span> stringSize = normalText.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: dic <span class="keyword">as</span>? [<span class="type">String</span> : <span class="type">AnyObject</span>], context:<span class="literal">nil</span>).size</div><div class="line">     </div><div class="line">     <span class="keyword">return</span> stringSize.width</div><div class="line">     </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>MD5 加密</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> md5 : <span class="type">String</span>&#123;</div><div class="line">     </div><div class="line">    <span class="keyword">let</span> str = <span class="keyword">self</span>.cString(using: <span class="type">String</span>.<span class="type">Encoding</span>.utf8)</div><div class="line">     </div><div class="line">    <span class="keyword">let</span> strLen = <span class="type">CUnsignedInt</span>(<span class="keyword">self</span>.lengthOfBytes(using: <span class="type">String</span>.<span class="type">Encoding</span>.utf8))</div><div class="line">     </div><div class="line">    <span class="keyword">let</span> digestLen = <span class="type">Int</span>(<span class="type">CC_MD5_DIGEST_LENGTH</span>)</div><div class="line">     </div><div class="line">    <span class="keyword">let</span> result = <span class="type">UnsafeMutablePointer</span>&lt;<span class="type">CUnsignedChar</span>&gt;.allocate(capacity: digestLen)</div><div class="line">     </div><div class="line">    <span class="type">CC_MD5</span>(str!, strLen, result)</div><div class="line">     </div><div class="line">    <span class="keyword">let</span> hash = <span class="type">NSMutableString</span>()</div><div class="line">     </div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">0</span> ..&lt; digestLen &#123;</div><div class="line">         </div><div class="line">        hash.appendFormat(<span class="string">"%02x"</span>, result[i])</div><div class="line">         </div><div class="line">    &#125;</div><div class="line">     </div><div class="line">    result.deinitialize()</div><div class="line">     </div><div class="line">    <span class="keyword">return</span> <span class="type">String</span>(format: hash <span class="keyword">as</span> <span class="type">String</span>)</div><div class="line">     </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>汉字转拼音(需要消耗不少性能,注意使用)</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">transformToPinYin</span><span class="params">()</span></span> -&gt; <span class="type">String</span> &#123;</div><div class="line">     </div><div class="line">    <span class="keyword">let</span> mutableString = <span class="type">NSMutableString</span>(string: <span class="keyword">self</span>)</div><div class="line">     </div><div class="line">    <span class="comment">//把汉字转为拼音</span></div><div class="line">     </div><div class="line">    <span class="type">CFStringTransform</span>(mutableString, <span class="literal">nil</span>, kCFStringTransformToLatin, <span class="literal">false</span>)</div><div class="line">     </div><div class="line">    <span class="comment">//去掉拼音的音标</span></div><div class="line">     </div><div class="line">    <span class="type">CFStringTransform</span>(mutableString, <span class="literal">nil</span>, kCFStringTransformStripDiacritics, <span class="literal">false</span>)</div><div class="line">     </div><div class="line">    <span class="keyword">let</span> string = <span class="type">String</span>(mutableString)</div><div class="line">     </div><div class="line">    <span class="comment">//去掉空格</span></div><div class="line">     </div><div class="line">    <span class="keyword">return</span> string.replacingOccurrences(of: <span class="string">" "</span>, with: <span class="string">""</span>)</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>把这些方法全部放到下面的的代码里面,即可使用</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 扩展 String 类型</span></div><div class="line">  </div><div class="line"><span class="class"><span class="keyword">extension</span> <span class="title">String</span> </span>&#123;</div><div class="line">  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="扩展UILabel"><a href="#扩展UILabel" class="headerlink" title="扩展UILabel"></a>扩展UILabel</h2><ol>
+<li><p>修改UILabel的行间距</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">modifyTheLineSpacing</span><span class="params">(<span class="built_in">distance</span>: CGFloat)</span></span> &#123;</div><div class="line">     </div><div class="line">     <span class="keyword">let</span> attributedString: <span class="type">NSMutableAttributedString</span> = <span class="type">NSMutableAttributedString</span>(string: <span class="keyword">self</span>.text!)</div><div class="line">     </div><div class="line">     <span class="keyword">let</span> paragraphStyle: <span class="type">NSMutableParagraphStyle</span> = <span class="type">NSMutableParagraphStyle</span>()</div><div class="line">     </div><div class="line">     paragraphStyle.lineSpacing = <span class="built_in">distance</span>       <span class="comment">// 调整行间距</span></div><div class="line">     </div><div class="line">     attributedString.addAttribute(<span class="type">NSParagraphStyleAttributeName</span>, value: paragraphStyle, range: <span class="type">NSMakeRange</span>(<span class="number">0</span>, (<span class="keyword">self</span>.text! <span class="keyword">as</span> <span class="type">NSString</span>).length))</div><div class="line">     </div><div class="line">     <span class="keyword">self</span>.attributedText = attributedString;</div><div class="line">     </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol>
+<li><p>修改字体颜色</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">changeTheTextColor</span><span class="params">(textColor: UIColor, textFont: CGFloat, range: NSRange)</span></span> &#123;</div><div class="line">     </div><div class="line">     <span class="keyword">let</span> attributedString: <span class="type">NSMutableAttributedString</span> = <span class="type">NSMutableAttributedString</span>(string: <span class="keyword">self</span>.text!)</div><div class="line">     </div><div class="line">     <span class="keyword">let</span> attris: [<span class="type">String</span>: <span class="type">AnyObject</span>] = [</div><div class="line">         </div><div class="line">         <span class="type">NSForegroundColorAttributeName</span>: textColor,</div><div class="line">         </div><div class="line">         <span class="type">NSFontAttributeName</span>: <span class="type">UIFont</span>.systemFont(ofSize: textFont),</div><div class="line">         </div><div class="line">         <span class="type">NSBackgroundColorAttributeName</span>: <span class="keyword">self</span>.backgroundColor!</div><div class="line">         </div><div class="line">     ]</div><div class="line">     </div><div class="line">     attributedString.addAttributes(attris, range: range)</div><div class="line">     </div><div class="line">     <span class="keyword">self</span>.attributedText = attributedString;</div><div class="line">     </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>把这些方法全部放到下面的的代码里面,即可使用</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 扩展 String 类型</span></div><div class="line">  </div><div class="line"><span class="class"><span class="keyword">extension</span> <span class="title">UILabel</span> </span>&#123;</div><div class="line">  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="扩展UIView"><a href="#扩展UIView" class="headerlink" title="扩展UIView"></a>扩展UIView</h2><p>写在扩展前面,因为我比较喜欢使用<strong>Frame</strong>布局,没有使用Xib,SB等, 一开始使用布局的时候都是使用</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">self</span>.view.frame.size.with + <span class="keyword">self</span>.view.frame.origin.x</div></pre></td></tr></table></figure>
+<p>这样布局, 写着很累,个人能力又有较大的提升的时候,对<strong>UIView进行扩展</strong>之后,想要和上面的代码拥有相同的效果便很简单了</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">self</span>.view.minX</div></pre></td></tr></table></figure>
+<p>是不是很简单?</p>
+<p>对<strong>UIView</strong>进行扩展</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">extension</span> <span class="title">UIView</span> </span>&#123;</div><div class="line">    </div><div class="line">    <span class="comment">// 获取view左边的坐标</span></div><div class="line">    </div><div class="line">    <span class="keyword">var</span> minX: <span class="type">CGFloat</span> &#123;</div><div class="line">        </div><div class="line">        <span class="keyword">return</span> <span class="keyword">self</span>.frame.origin.x</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">// 获取view右边的坐标</span></div><div class="line">    </div><div class="line">    <span class="keyword">var</span> maxX: <span class="type">CGFloat</span> &#123;</div><div class="line">        </div><div class="line">        <span class="keyword">return</span> <span class="keyword">self</span>.frame.origin.x + <span class="keyword">self</span>.frame.size.width</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">// 获取view上边的坐标</span></div><div class="line">    </div><div class="line">    <span class="keyword">var</span> minY: <span class="type">CGFloat</span> &#123;</div><div class="line">        </div><div class="line">        <span class="keyword">return</span> <span class="keyword">self</span>.frame.origin.y</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">// 获取view下边的坐标</span></div><div class="line">    </div><div class="line">    <span class="keyword">var</span> maxY: <span class="type">CGFloat</span> &#123;</div><div class="line">        </div><div class="line">        <span class="keyword">return</span> <span class="keyword">self</span>.frame.origin.y + <span class="keyword">self</span>.frame.size.height</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">// 获取view的x轴的中心点</span></div><div class="line">    </div><div class="line">    <span class="keyword">var</span> centerX: <span class="type">CGFloat</span> &#123;</div><div class="line">        </div><div class="line">        <span class="keyword">return</span> <span class="keyword">self</span>.center.x</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">// 获取view的y轴的中心点</span></div><div class="line">    </div><div class="line">    <span class="keyword">var</span> centerY: <span class="type">CGFloat</span> &#123;</div><div class="line">        </div><div class="line">        <span class="keyword">return</span> <span class="keyword">self</span>.center.y</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">// 获取view的宽度</span></div><div class="line">    </div><div class="line">    <span class="keyword">var</span> width: <span class="type">CGFloat</span> &#123;</div><div class="line">        </div><div class="line">        <span class="keyword">return</span> <span class="keyword">self</span>.frame.size.width</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">// 获取view的高度</span></div><div class="line">    </div><div class="line">    <span class="keyword">var</span> height: <span class="type">CGFloat</span> &#123;</div><div class="line">        </div><div class="line">        <span class="keyword">return</span> <span class="keyword">self</span>.frame.size.height</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">// 获取view的size</span></div><div class="line">    </div><div class="line">    <span class="keyword">var</span> size: <span class="type">CGSize</span> &#123;</div><div class="line">        </div><div class="line">        <span class="keyword">return</span> <span class="keyword">self</span>.frame.size</div><div class="line">        </div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>使用方法很简单,比如</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//获取View的高度</span></div><div class="line"></div><div class="line"><span class="keyword">self</span>.view.height</div><div class="line"></div><div class="line"><span class="comment">//获取View的宽度</span></div><div class="line"></div><div class="line"><span class="keyword">self</span>.view.width</div></pre></td></tr></table></figure>
+<h2 id="扩展UIImage"><a href="#扩展UIImage" class="headerlink" title="扩展UIImage"></a>扩展UIImage</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">extension</span> <span class="title">UIImage</span></span>&#123;</div><div class="line">    </div><div class="line">    <span class="comment">// 重设图片大小</span></div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">changeImageSize</span><span class="params">(size:CGSize)</span></span> -&gt; <span class="type">UIImage</span> &#123;</div><div class="line">        <span class="type">UIGraphicsBeginImageContextWithOptions</span>(size,<span class="literal">false</span>,<span class="type">UIScreen</span>.main.scale);</div><div class="line">        </div><div class="line">        <span class="keyword">self</span>.draw(<span class="keyword">in</span>: <span class="type">CGRect</span>(x: <span class="number">0</span>, y: <span class="number">0</span>, width: size.width, height: size.height))</div><div class="line">        </div><div class="line">        <span class="keyword">let</span> resizeImage: <span class="type">UIImage</span> = <span class="type">UIGraphicsGetImageFromCurrentImageContext</span>()!</div><div class="line">        </div><div class="line">        <span class="type">UIGraphicsEndImageContext</span>();</div><div class="line">        </div><div class="line">        <span class="keyword">return</span> resizeImage;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">// 等比例缩放</span></div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">scaleImage</span><span class="params">(scaleSize:CGFloat)</span></span> -&gt; <span class="type">UIImage</span> &#123;</div><div class="line">        </div><div class="line">        <span class="keyword">let</span> reSize = <span class="type">CGSize</span>(width: <span class="keyword">self</span>.size.width * scaleSize, height: <span class="keyword">self</span>.size.height * scaleSize)</div><div class="line">        </div><div class="line">        <span class="keyword">return</span> changeImageSize(size: reSize)</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="扩展UIColor"><a href="#扩展UIColor" class="headerlink" title="扩展UIColor"></a>扩展UIColor</h2><p>当设计师给的16进制颜色的时候便可以调用下面的方法</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">extension</span> <span class="title">UIColor</span> </span>&#123;</div><div class="line">    </div><div class="line">    <span class="keyword">convenience</span> <span class="keyword">init</span>(hexString: <span class="type">String</span>) &#123;</div><div class="line">        </div><div class="line">        <span class="comment">// 存储转换后的数值</span></div><div class="line">        </div><div class="line">        <span class="keyword">var</span> red:<span class="type">UInt32</span> = <span class="number">0</span>, green:<span class="type">UInt32</span> = <span class="number">0</span>, blue:<span class="type">UInt32</span> = <span class="number">0</span></div><div class="line">        </div><div class="line">        <span class="comment">// 分别转换进行转换</span></div><div class="line">        </div><div class="line">        <span class="type">Scanner</span>(string: hexString[<span class="number">0</span>..&lt;<span class="number">2</span>]).scanHexInt32(&amp;red)</div><div class="line">        </div><div class="line">        <span class="type">Scanner</span>(string: hexString[<span class="number">2</span>..&lt;<span class="number">4</span>]).scanHexInt32(&amp;green)</div><div class="line">        </div><div class="line">        <span class="type">Scanner</span>(string: hexString[<span class="number">4</span>..&lt;<span class="number">6</span>]).scanHexInt32(&amp;blue)</div><div class="line">        </div><div class="line">        <span class="keyword">self</span>.<span class="keyword">init</span>(red: <span class="type">CGFloat</span>(red)/<span class="number">255.0</span>, green: <span class="type">CGFloat</span>(green)/<span class="number">255.0</span>, blue: <span class="type">CGFloat</span>(blue)/<span class="number">255.0</span>, alpha: <span class="number">1.0</span>)</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    </div><div class="line">    <span class="keyword">convenience</span> <span class="keyword">init</span>(hexString: <span class="type">String</span>, alpha: <span class="type">CGFloat</span>) &#123;</div><div class="line">        </div><div class="line">        <span class="comment">// 存储转换后的数值</span></div><div class="line">        </div><div class="line">        <span class="keyword">var</span> red:<span class="type">UInt32</span> = <span class="number">0</span>, green:<span class="type">UInt32</span> = <span class="number">0</span>, blue:<span class="type">UInt32</span> = <span class="number">0</span></div><div class="line">        </div><div class="line">        <span class="comment">// 分别转换进行转换</span></div><div class="line">        </div><div class="line">        <span class="type">Scanner</span>(string: hexString[<span class="number">0</span>..&lt;<span class="number">2</span>]).scanHexInt32(&amp;red)</div><div class="line">        </div><div class="line">        <span class="type">Scanner</span>(string: hexString[<span class="number">2</span>..&lt;<span class="number">4</span>]).scanHexInt32(&amp;green)</div><div class="line">        </div><div class="line">        <span class="type">Scanner</span>(string: hexString[<span class="number">4</span>..&lt;<span class="number">6</span>]).scanHexInt32(&amp;blue)</div><div class="line">        </div><div class="line">        <span class="keyword">self</span>.<span class="keyword">init</span>(red: <span class="type">CGFloat</span>(red)/<span class="number">255.0</span>, green: <span class="type">CGFloat</span>(green)/<span class="number">255.0</span>, blue: <span class="type">CGFloat</span>(blue)/<span class="number">255.0</span>, alpha: alpha)</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>使用方法</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">imageView.backgroundColor = <span class="type">UIColor</span>(hexString: <span class="string">"eeeeee"</span>)</div></pre></td></tr></table></figure>
+<h2 id="扩展-提示框-UIAlertController"><a href="#扩展-提示框-UIAlertController" class="headerlink" title="扩展 提示框 UIAlertController"></a>扩展 提示框 UIAlertController</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">extension</span> <span class="title">UIAlertController</span> </span>&#123;</div><div class="line">    </div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">func</span> <span class="title">createUIAlertController</span>(<span class="title">title</span>: <span class="title">String</span>?, <span class="title">message</span>: <span class="title">String</span>?, <span class="title">leftButton</span>: <span class="title">String</span>, <span class="title">rightButton</span>: <span class="title">String</span>, <span class="title">complete</span>: @<span class="title">escaping</span> () -&gt; <span class="title">Void</span>) -&gt; <span class="title">UIAlertController</span></span>&#123;</div><div class="line">        </div><div class="line">        <span class="keyword">let</span> av = <span class="type">UIAlertController</span>(title: title, message: message, preferredStyle: .alert)</div><div class="line">        </div><div class="line">        <span class="keyword">let</span> cancel = <span class="type">UIAlertAction</span>(title: leftButton, style: .cancel, handler: <span class="literal">nil</span>)</div><div class="line">        </div><div class="line">        <span class="keyword">let</span> confirm = <span class="type">UIAlertAction</span>(title: rightButton, style: .destructive, handler: &#123; (action) <span class="keyword">in</span></div><div class="line">            </div><div class="line">            complete()</div><div class="line">          </div><div class="line">        &#125;)</div><div class="line">        </div><div class="line">        av.addAction(cancel)</div><div class="line">        </div><div class="line">        av.addAction(confirm)</div><div class="line">        </div><div class="line">        <span class="keyword">return</span> av</div><div class="line">        </div><div class="line">    &#125;</div><div class="line"></div><div class="line">    </div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">func</span> <span class="title">createUIAlertController</span>(<span class="title">title</span>: <span class="title">String</span>?, <span class="title">message</span>: <span class="title">String</span>?, <span class="title">leftButton</span>: <span class="title">String</span>, <span class="title">rightButton</span>: <span class="title">String</span>, <span class="title">cancel</span>: @<span class="title">escaping</span>() -&gt; <span class="title">Void</span>, <span class="title">complete</span>: @<span class="title">escaping</span> () -&gt; <span class="title">Void</span>) -&gt; <span class="title">UIAlertController</span></span>&#123;</div><div class="line">        </div><div class="line">        <span class="keyword">let</span> av = <span class="type">UIAlertController</span>(title: title, message: message, preferredStyle: .alert)</div><div class="line">        </div><div class="line">        <span class="keyword">let</span> cancel = <span class="type">UIAlertAction</span>(title: leftButton, style: .cancel) &#123; (action) <span class="keyword">in</span></div><div class="line">            </div><div class="line">            cancel()</div><div class="line">            </div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">let</span> confirm = <span class="type">UIAlertAction</span>(title: rightButton, style: .destructive, handler: &#123; (action) <span class="keyword">in</span></div><div class="line">            </div><div class="line">            complete()</div><div class="line">           </div><div class="line">        &#125;)</div><div class="line">        </div><div class="line">        av.addAction(cancel)</div><div class="line">        </div><div class="line">        av.addAction(confirm)</div><div class="line">        </div><div class="line">        <span class="keyword">return</span> av</div><div class="line">        </div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>使用方法</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">self</span>.present(<span class="type">UIAlertController</span>.createUIAlertController(title: <span class="string">"提示"</span>, message: <span class="string">"扩展到这里就结束了"</span>, leftButton: <span class="string">"取消"</span>, rightButton: <span class="string">"确定"</span>, cancel: &#123;</div><div class="line">                </div><div class="line">                <span class="comment">// 点击取消的按钮</span></div><div class="line">                </div><div class="line">            &#125;, complete: &#123;</div><div class="line">                </div><div class="line">                <span class="comment">// 点击确定的按钮</span></div><div class="line">                </div><div class="line">            &#125;)</div><div class="line">                , animated: <span class="literal">true</span>, completion: <span class="literal">nil</span>)</div></pre></td></tr></table></figure>
+      
+    </div>
+    
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="http://ody22imht.bkt.clouddn.com/%E6%94%AF%E4%BB%98%E5%AE%9D%E6%89%93%E8%B5%8F.png" alt="卢梦如 Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Swift-功能/" rel="tag"><i class="fa fa-tag"></i> Swift 功能</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/11/iOS-静态库的打包/" rel="next" title="iOS-静态库的打包">
+                <i class="fa fa-chevron-left"></i> iOS-静态库的打包
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/头像.jpg"
+               alt="卢梦如" />
+          <p class="site-author-name" itemprop="name">卢梦如</p>
+           
+              <p class="site-description motion-element" itemprop="description">不积硅步无以至千里，不积小流无以成海。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/lumengru" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com" target="_blank" title="简书">
+                  
+                    <i class="fa fa-fw fa-heartbeat"></i>
+                  
+                  简书
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://juejin.im" target="_blank" title="掘金">
+                  
+                    <i class="fa fa-fw fa-spinner"></i>
+                  
+                  掘金
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-link"></i>
+              推荐阅读
+            </div>
+            <ul class="links-of-blogroll-list">
+  
+    <li class="links-of-blogroll-item">
+      <a href="http://www.greatrong.top" title="葛镇榕" target="_blank">
+        葛镇榕
+      </a>
+    </li>
+  
+    <li class="links-of-blogroll-item">
+      <a href="http://www.uisdc.com/" title="优设" target="_blank">
+        优设
+      </a>
+    </li>
+  
+    <li class="links-of-blogroll-item">
+      <a href="http://www.zhangxinxu.com/" title="张鑫旭" target="_blank">
+        张鑫旭
+      </a>
+    </li>
+  
+    <li class="links-of-blogroll-item">
+      <a href="http://www.alloyteam.com/nav/" title="Web前端导航" target="_blank">
+        Web前端导航
+      </a>
+    </li>
+  
+    <li class="links-of-blogroll-item">
+      <a href="http://www.36zhen.com/t?id=3448" title="前端书籍资料" target="_blank">
+        前端书籍资料
+      </a>
+    </li>
+  
+    <li class="links-of-blogroll-item">
+      <a href="http://ife.baidu.com/" title="百度前端技术学院" target="_blank">
+        百度前端技术学院
+      </a>
+    </li>
+  
+    <li class="links-of-blogroll-item">
+      <a href="http://wf.uisdc.com/cn/" title="google前端开发基础" target="_blank">
+        google前端开发基础
+      </a>
+    </li>
+  
+</ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#扩展的写法"><span class="nav-number">1.</span> <span class="nav-text">扩展的写法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#String的扩展方法"><span class="nav-number">2.</span> <span class="nav-text">String的扩展方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#扩展UILabel"><span class="nav-number">3.</span> <span class="nav-text">扩展UILabel</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#扩展UIView"><span class="nav-number">4.</span> <span class="nav-text">扩展UIView</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#扩展UIImage"><span class="nav-number">5.</span> <span class="nav-text">扩展UIImage</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#扩展UIColor"><span class="nav-number">6.</span> <span class="nav-text">扩展UIColor</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#扩展-提示框-UIAlertController"><span class="nav-number">7.</span> <span class="nav-text">扩展 提示框 UIAlertController</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">卢梦如</span>
+</div>
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+    
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "99c15b15cbf448758dc0ed350abdab50",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
