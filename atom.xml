@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lumengru.com/"/>
-  <updated>2017-07-10T07:39:36.000Z</updated>
+  <updated>2017-07-10T08:30:37.000Z</updated>
   <id>http://lumengru.com/</id>
   
   <author>
@@ -20,20 +20,20 @@
     <link href="http://lumengru.com/2017/07/10/Swift-%E5%8E%BB%E6%8E%89%E5%A4%9A%E4%BD%99%E7%9A%84%E6%89%93%E5%8D%B0/"/>
     <id>http://lumengru.com/2017/07/10/Swift-去掉多余的打印/</id>
     <published>2017-07-10T07:39:02.000Z</published>
-    <updated>2017-07-10T07:39:36.000Z</updated>
+    <updated>2017-07-10T08:30:37.000Z</updated>
     
     <content type="html"><![CDATA[<p>在我们开发过程中, 工具运行时控制台有许多关于网络相关的打印,非常烦人,我们可以选择屏蔽掉这些打印</p>
 <a id="more"></a>
 <h2 id="屏蔽多余的打印"><a href="#屏蔽多余的打印" class="headerlink" title="屏蔽多余的打印"></a>屏蔽多余的打印</h2><p>选择Product-&gt;Scheme-&gt;Edit Scheme …或者直接按 command + shift + &lt; 快捷键，在弹出的窗口中Environment Variables 下添加 name为<strong>0S_ACTIVITY_MODE</strong>, value为<strong>disable</strong> 如图</p>
 <p><img src="http://ody22imht.bkt.clouddn.com/20161021104932103.png"></p>
-<h2 id="发布时取消打印"><a href="#发布时取消打印" class="headerlink" title="发布时取消打印"></a>发布时取消打印</h2><ol>
+<h2 id="发布时取消打印-自定义打印代码"><a href="#发布时取消打印-自定义打印代码" class="headerlink" title="发布时取消打印,自定义打印代码"></a>发布时取消打印,自定义打印代码</h2><ol>
 <li>OC代码</li>
 </ol>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#ifndef DEBUG_MODE  </span></div><div class="line"><span class="meta">#define DLog( s, ... ) NSLog( @<span class="meta-string">"&lt;%p %@:(%d)&gt; %@"</span>, 	self, [[NSString stringWithUTF8String:__FILE__] 	lastPathComponent], __LINE__, [NSString 	stringWithFormat:(s), ##__VA_ARGS__] )  </span></div><div class="line"><span class="meta">#else  </span></div><div class="line"><span class="meta">#define DLog( s, ... )   </span></div><div class="line"><span class="meta">#endif</span></div></pre></td></tr></table></figure>
 <ol>
 <li>Swift代码</li>
 </ol>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">LMRLog</span>&lt;T&gt;<span class="params">(message : T, file : String = #file, lineNumber : Int = #line)</span></span> &#123;</div><div class="line"></div><div class="line">#<span class="keyword">if</span> <span class="type">DEBUG</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> fileName = (file <span class="keyword">as</span> <span class="type">NSString</span>).lastPathComponent</div><div class="line"><span class="built_in">print</span>(<span class="string">"[<span class="subst">\(fileName)</span>:line:<span class="subst">\(lineNumber)</span>]- <span class="subst">\(message)</span>"</span>)</div><div class="line"></div><div class="line">#endif</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">LMRLog</span>&lt;T&gt;<span class="params">(message : T, file : String = #file, lineNumber : Int = #line)</span></span> &#123;</div><div class="line"></div><div class="line">	#<span class="keyword">if</span> <span class="type">DEBUG</span></div><div class="line"></div><div class="line">		<span class="keyword">let</span> fileName = (file <span class="keyword">as</span> <span class="type">NSString</span>).lastPathComponent</div><div class="line">		<span class="built_in">print</span>(<span class="string">"[\(fileName):line:\(lineNumber)]- \(message)"</span>)</div><div class="line"></div><div class="line">	#endif</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 ]]></content>
     
     <summary type="html">
@@ -443,7 +443,7 @@
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> <span class="keyword">self</span>.backClosure != <span class="literal">nil</span> &#123;</div><div class="line">          </div><div class="line">   <span class="keyword">self</span>.backClosure?(<span class="string">"卢梦如"</span>, <span class="number">24</span>, [<span class="string">"name"</span>: <span class="string">"卢梦如"</span>])</div><div class="line">          </div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 <li><p>在第一个页面里创建第二个页面的实例的地方对闭包传值</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">secondVC.backClosure = &#123;</div><div class="line">          </div><div class="line">      (name: <span class="type">String</span>, age: <span class="type">Int</span>, dictionary: [<span class="type">String</span>: <span class="type">String</span>]) -&gt; <span class="type">Void</span> <span class="keyword">in</span></div><div class="line">          </div><div class="line">      <span class="comment">// 打印传过来的数据</span></div><div class="line">          </div><div class="line">      <span class="built_in">print</span>(<span class="string">"<span class="subst">\(name)</span> is <span class="subst">\(age)</span> years"</span>, dictionary)</div><div class="line">          </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">secondVC.backClosure = &#123;</div><div class="line">          </div><div class="line">      (name: <span class="type">String</span>, age: <span class="type">Int</span>, dictionary: [<span class="type">String</span>: <span class="type">String</span>]) -&gt; <span class="type">Void</span> <span class="keyword">in</span></div><div class="line">          </div><div class="line">      <span class="comment">// 打印传过来的数据</span></div><div class="line">          </div><div class="line">      <span class="built_in">print</span>(<span class="string">"\(name) is \(age) years"</span>, dictionary)</div><div class="line">          </div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <h2 id="代理"><a href="#代理" class="headerlink" title="代理"></a>代理</h2><ul>
@@ -466,7 +466,7 @@
 </ul>
 <ul>
 <li><p>执行代理的方法</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">backValue</span><span class="params">(string: String, value: Int)</span></span> &#123;</div><div class="line">      </div><div class="line">     <span class="comment">// 打印传入的数据</span></div><div class="line">      </div><div class="line">     <span class="built_in">print</span>(<span class="string">"<span class="subst">\(string)</span> is <span class="subst">\(value)</span>"</span>)</div><div class="line">      </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">backValue</span><span class="params">(string: String, value: Int)</span></span> &#123;</div><div class="line">      </div><div class="line">     <span class="comment">// 打印传入的数据</span></div><div class="line">      </div><div class="line">     <span class="built_in">print</span>(<span class="string">"\(string) is \(value)"</span>)</div><div class="line">      </div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 </ul>
 ]]></content>

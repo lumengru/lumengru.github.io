@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[Swift-去掉多余的打印]]></title>
     <url>%2F2017%2F07%2F10%2FSwift-%E5%8E%BB%E6%8E%89%E5%A4%9A%E4%BD%99%E7%9A%84%E6%89%93%E5%8D%B0%2F</url>
-    <content type="text"><![CDATA[在我们开发过程中, 工具运行时控制台有许多关于网络相关的打印,非常烦人,我们可以选择屏蔽掉这些打印 屏蔽多余的打印选择Product-&gt;Scheme-&gt;Edit Scheme …或者直接按 command + shift + &lt; 快捷键，在弹出的窗口中Environment Variables 下添加 name为0S_ACTIVITY_MODE, value为disable 如图 发布时取消打印 OC代码 12345#ifndef DEBUG_MODE #define DLog( s, ... ) NSLog( @"&lt;%p %@:(%d)&gt; %@", self, [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] ) #else #define DLog( s, ... ) #endif Swift代码 123456789func LMRLog&lt;T&gt;(message : T, file : String = #file, lineNumber : Int = #line) &#123;#if DEBUGlet fileName = (file as NSString).lastPathComponentprint("[\(fileName):line:\(lineNumber)]- \(message)")#endif&#125;]]></content>
+    <content type="text"><![CDATA[在我们开发过程中, 工具运行时控制台有许多关于网络相关的打印,非常烦人,我们可以选择屏蔽掉这些打印 屏蔽多余的打印选择Product-&gt;Scheme-&gt;Edit Scheme …或者直接按 command + shift + &lt; 快捷键，在弹出的窗口中Environment Variables 下添加 name为0S_ACTIVITY_MODE, value为disable 如图 发布时取消打印,自定义打印代码 OC代码 12345#ifndef DEBUG_MODE #define DLog( s, ... ) NSLog( @"&lt;%p %@:(%d)&gt; %@", self, [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] ) #else #define DLog( s, ... ) #endif Swift代码 123456789func LMRLog&lt;T&gt;(message : T, file : String = #file, lineNumber : Int = #line) &#123; #if DEBUG let fileName = (file as NSString).lastPathComponent print("[\(fileName):line:\(lineNumber)]- \(message)") #endif&#125;]]></content>
       <categories>
         <category>Swift</category>
       </categories>
