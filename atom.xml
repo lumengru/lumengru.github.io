@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lumengru.com/"/>
-  <updated>2017-06-23T03:07:50.000Z</updated>
+  <updated>2017-07-10T07:37:15.000Z</updated>
   <id>http://lumengru.com/</id>
   
   <author>
@@ -14,6 +14,39 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>swift-去掉多余打印</title>
+    <link href="http://lumengru.com/2017/07/10/swift-%E5%8E%BB%E6%8E%89%E5%A4%9A%E4%BD%99%E6%89%93%E5%8D%B0/"/>
+    <id>http://lumengru.com/2017/07/10/swift-去掉多余打印/</id>
+    <published>2017-07-10T07:23:50.000Z</published>
+    <updated>2017-07-10T07:37:15.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>在我们开发过程中, 工具运行时控制台有许多关于网络相关的打印,非常烦人,我们可以选择屏蔽掉这些打印</p>
+<a id="more"></a>
+<h2 id="屏蔽多余的打印"><a href="#屏蔽多余的打印" class="headerlink" title="屏蔽多余的打印"></a>屏蔽多余的打印</h2><p>选择Product-&gt;Scheme-&gt;Edit Scheme …或者直接按 command + shift + &lt; 快捷键，在弹出的窗口中Environment Variables 下添加 name为<strong>0S_ACTIVITY_MODE</strong>, value为<strong>disable</strong> 如图</p>
+<p><img src="http://ody22imht.bkt.clouddn.com/20161021104932103.png"></p>
+<h2 id="发布时取消打印"><a href="#发布时取消打印" class="headerlink" title="发布时取消打印"></a>发布时取消打印</h2><ol>
+<li><p>OC代码</p>
+ <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#ifndef DEBUG_MODE  </span></div><div class="line"><span class="meta">#define DLog( s, ... ) NSLog( @<span class="meta-string">"&lt;%p %@:(%d)&gt; %@"</span>, 	self, [[NSString stringWithUTF8String:__FILE__] 	lastPathComponent], __LINE__, [NSString 	stringWithFormat:(s), ##__VA_ARGS__] )  </span></div><div class="line"><span class="meta">#else  </span></div><div class="line"><span class="meta">#define DLog( s, ... )   </span></div><div class="line"><span class="meta">#endif</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>Swift代码</p>
+ <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">LMRLog</span>&lt;T&gt;<span class="params">(message : T, file : String = #file, lineNumber : Int = #line)</span></span> &#123;</div><div class="line">   </div><div class="line">   	#<span class="keyword">if</span> <span class="type">DEBUG</span></div><div class="line">       </div><div class="line">       	<span class="keyword">let</span> fileName = (file <span class="keyword">as</span> <span class="type">NSString</span>).lastPathComponent</div><div class="line">       	<span class="built_in">print</span>(<span class="string">"[\(fileName):line:\(lineNumber)]- \(message)"</span>)</div><div class="line">       </div><div class="line">   	#endif</div><div class="line">&#125;</div></pre></td></tr></table></figure></li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在我们开发过程中, 工具运行时控制台有许多关于网络相关的打印,非常烦人,我们可以选择屏蔽掉这些打印&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Swift" scheme="http://lumengru.com/categories/Swift/"/>
+    
+    
+      <category term="Swift 功能" scheme="http://lumengru.com/tags/Swift-%E5%8A%9F%E8%83%BD/"/>
+    
+  </entry>
   
   <entry>
     <title>iOS-后台语音播报</title>
