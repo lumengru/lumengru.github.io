@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://lumengru.com/2017/06/11/iOS-%E9%9D%99%E6%80%81%E5%BA%93%E7%9A%84%E6%89%93%E5%8C%85/</loc>
+    <lastmod>2017-07-10T02:11:16.000Z</lastmod>
+    <data>
+        <display>
+        <title>iOS-静态库的打包</title>
+        <pubTime>2017-06-11T07:47:28.000Z</pubTime>
+        
+        <tag>iOS 功能</tag>
+         
+         
+           
+             
+              <breadCrumb title="iOS" url="http://lumengru.com/categories/iOS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://lumengru.com/2017/06/23/iOS-%E5%90%8E%E5%8F%B0%E8%AF%AD%E9%9F%B3%E6%92%AD%E6%8A%A5/</loc>
     <lastmod>2017-06-23T03:07:50.000Z</lastmod>
     <data>
@@ -98,26 +118,6 @@
            
              
               <breadCrumb title="Swift" url="http://lumengru.com/categories/Swift/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://lumengru.com/2017/06/11/iOS-%E9%9D%99%E6%80%81%E5%BA%93%E7%9A%84%E6%89%93%E5%8C%85/</loc>
-    <lastmod>2017-06-12T01:34:55.000Z</lastmod>
-    <data>
-        <display>
-        <title>iOS-静态库的打包</title>
-        <pubTime>2017-06-11T07:47:28.000Z</pubTime>
-        
-        <tag>iOS 功能</tag>
-         
-         
-           
-             
-              <breadCrumb title="iOS" url="http://lumengru.com/categories/iOS/"/>
           
         </display>
     </data>

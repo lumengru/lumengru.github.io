@@ -154,7 +154,7 @@
     <link href="http://lumengru.com/2017/06/11/iOS-%E9%9D%99%E6%80%81%E5%BA%93%E7%9A%84%E6%89%93%E5%8C%85/"/>
     <id>http://lumengru.com/2017/06/11/iOS-静态库的打包/</id>
     <published>2017-06-11T07:47:28.000Z</published>
-    <updated>2017-06-12T01:34:55.000Z</updated>
+    <updated>2017-07-10T02:11:16.000Z</updated>
     
     <content type="html"><![CDATA[<p>这段时间公司需要把一个工程里的代码抽出来制作成静态库, 所以就研究了一下怎么打包静态库</p>
 <a id="more"></a>
@@ -227,21 +227,8 @@
 <li><p>选中文件点击 <strong>Show in Finder</strong></p>
 <p><img src="http://ody22imht.bkt.clouddn.com/WX20170611-161808@2x.png" style="zoom:30%"></p>
 </li>
-<li><p>此时文件里面有个 <strong>.a</strong> 文件 和 一个文件夹</p>
+<li><p>此时文件里面有个 <strong>.a</strong> 文件 和 一个文件夹如果要使用这个的话需要把两个文件全部放到工程文件里面</p>
 <p> <img src="http://ody22imht.bkt.clouddn.com/WX20170611-162314@2x.png" style="zoom:30%"></p>
-</li>
-</ul>
-</li>
-</ol>
-<ol>
-<li><p>静态库合并</p>
-<ul>
-<li><p>让工程在<strong>真机</strong>和<strong>模拟器</strong>上各运行一次, 然后点击 <strong>Show in Finder</strong> 选择文件夹 <strong>分栏展示</strong>, 可以看到文件的上一级有两个文件夹 <strong>Release-iphoneos</strong> 和 <strong>Release-iphonesimulator</strong><br><img src="http://ody22imht.bkt.clouddn.com/WX20170611-162630@2x.png" style="zoom:30%"></p>
-</li>
-<li><p>对这两个.a文件进行合并: 打开终端 在终端里面执行</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">lipo -create 第一个.a文件的绝对路径 第二个.a文件的绝对路径 -output 最终的.a文件路径。</div></pre></td></tr></table></figure>
-<p>本文中使用的命令如下</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">lipo -create /Users/harvey/Library/Developer/Xcode/DerivedData/FMDB-ctegiztcjikewoeprxxtmryzetfa/Build/Products/Release-iphoneos/libFMDB.a /Users/harvey/Library/Developer/Xcode/DerivedData/FMDB-ctegiztcjikewoeprxxtmryzetfa/Build/Products/Release-iphonesimulator/libFMDB.a -output /Users/harvey/Desktop/libFMDB.a</div></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
@@ -274,6 +261,23 @@
 <li><p>把SDK合并完成之后,直接替换掉<strong>.framework</strong> 文件里面的SDK文件就可以了</p>
 </li>
 </ol>
+<h2 id="静态库适配Bitcode"><a href="#静态库适配Bitcode" class="headerlink" title="静态库适配Bitcode"></a>静态库适配Bitcode</h2><p>在我第一次打包成功之后,使用静态库,在运行在真机 模拟器没有任何错误,然后打包工程的时候,报错了,错误信息是没有适配<strong><em>Bitcode</em></strong></p>
+<ol>
+<li>第一件事是在Target-&gt;Build Settings-&gt;Build Options中开启Enable BitCode.</li>
+<li>然后去Target-&gt;Build Settings-&gt;Custom Compiler Flags中加入-fembed-bitcode。</li>
+</ol>
+<p>如图:</p>
+<p><img src="http://ody22imht.bkt.clouddn.com/WX20170710-100148@2x.png" style="zoom:30%"></p>
+<h2 id="静态库合并"><a href="#静态库合并" class="headerlink" title="静态库合并"></a>静态库合并</h2><ul>
+<li><p>让工程在<strong>真机</strong>和<strong>模拟器</strong>上各运行一次, 然后点击 <strong>Show in Finder</strong> 选择文件夹 <strong>分栏展示</strong>, 可以看到文件的上一级有两个文件夹 <strong>Release-iphoneos</strong> 和 <strong>Release-iphonesimulator</strong></p>
+<p><img src="http://ody22imht.bkt.clouddn.com/WX20170611-162630@2x.png" style="zoom:30%"></p>
+</li>
+<li><p>对这两个.a文件进行合并: 打开终端 在终端里面执行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">lipo -create 第一个.a文件的绝对路径 第二个.a文件的绝对路径 -output 最终的.a文件路径。</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>本文中使用的命令如下:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">lipo -create </div><div class="line">/Users/harvey/Library/Developer/Xcode/DerivedData/FMDB-ctegiztcjikewoeprxxtmryzetfa/Build/Products/Release-iphoneos/libFMDB.a </div><div class="line">/Users/harvey/Library/Developer/Xcode/DerivedData/FMDB-ctegiztcjikewoeprxxtmryzetfa/Build/Products/Release-iphonesimulator/libFMDB.a </div><div class="line">-output </div><div class="line">/Users/harvey/Desktop/libFMDB.a</div></pre></td></tr></table></figure>
 <h2 id="静态库的使用"><a href="#静态库的使用" class="headerlink" title="静态库的使用"></a>静态库的使用</h2><ol>
 <li><p><strong>.a</strong>静态库的使用</p>
 <ul>
