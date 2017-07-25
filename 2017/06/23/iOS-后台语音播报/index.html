@@ -108,7 +108,7 @@
 <meta property="og:image" content="http://ody22imht.bkt.clouddn.com/WX20170623-102242@2x.png">
 <meta property="og:image" content="http://ody22imht.bkt.clouddn.com/WX20170623-103137.png">
 <meta property="og:image" content="http://ody22imht.bkt.clouddn.com/WX20170623-103724.png">
-<meta property="og:updated_time" content="2017-06-23T03:07:50.000Z">
+<meta property="og:updated_time" content="2017-07-25T09:34:30.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS-后台语音播报">
 <meta name="twitter:description" content="公司要求需要做一个类似支付宝的收款的语音播报功能,研究了一天才完成,记录下来">
@@ -418,13 +418,13 @@
       
         <p>公司要求需要做一个类似支付宝的收款的语音播报功能,研究了一天才完成,记录下来</p>
 <a id="more"></a>
-<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>语音播报功能的实现必须是<strong>推送</strong>加<strong>语音合成</strong>,选择的推送是极光推送</p>
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>语音播报功能的实现必须是<strong>推送</strong>加<strong>语音合成</strong>,选择的推送是极光推送,本文最终实现的效果即使APP被杀死也可以进行语音播报</p>
 <h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><ol>
 <li>配置推送证书,<strong>极光文档</strong>里面有,把极光推送集成进去就不说了</li>
-<li><p>语音合成我用的是系统的方法,不过语音死板不好听,但是使用很简单,3行点就可以,建议使用其他的SDK</p>
+<li><p>语音合成我用的是系统的方法,不过语音死板不好听,但是使用很简单,3行代码就可以,建议使用其他的SDK</p>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">AVSpeechUtterance</span> *utterance = [<span class="built_in">AVSpeechUtterance</span> speechUtteranceWithString:<span class="string">@"成功集成语音播报"</span>];</div><div class="line"> </div><div class="line"><span class="built_in">AVSpeechSynthesizer</span> *synth = [[<span class="built_in">AVSpeechSynthesizer</span> alloc] init];</div><div class="line"> </div><div class="line">[synth speakUtterance:utterance];</div></pre></td></tr></table></figure>
 </li>
-<li><p>在收到通知的时候使用上面的3行点就可以进行语音播报,但是只限于APP<strong>前台</strong>运行,当后台运行的时候语音播报便不可以了,此时需要加入下面代码让语音播报可以在后台运行,但是杀死的情况下不能播报,杀死重新启动返回后台也不可以播报. 我是在<strong>AppDelegate</strong>里面写入这个方法的</p>
+<li><p>在收到通知的时候使用上面的3行代码就可以进行语音播报,但是只限于APP<strong>前台</strong>运行,当后台运行的时候语音播报便不可以了,此时需要加入下面代码让语音播报可以在后台运行,但是杀死的情况下不能播报,杀死重新启动返回后台也不可以播报. 我是在<strong>AppDelegate</strong>里面写入这个方法的</p>
  <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (<span class="built_in">BOOL</span>)application:(<span class="built_in">UIApplication</span> *)application didFinishLaunchingWithOptions:(<span class="built_in">NSDictionary</span> *)launchOptions;</div></pre></td></tr></table></figure>
 <p>把下面的代码写入进去</p>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSError</span> *error = <span class="literal">NULL</span>;</div><div class="line"> </div><div class="line"><span class="built_in">AVAudioSession</span> *session = [<span class="built_in">AVAudioSession</span> sharedInstance];</div><div class="line"> </div><div class="line">[session setCategory:<span class="built_in">AVAudioSessionCategoryPlayback</span> error:&amp;error];</div><div class="line"> </div><div class="line"><span class="keyword">if</span>(error) &#123;</div><div class="line">    <span class="comment">// Do some error handling</span></div><div class="line">     </div><div class="line">&#125;</div><div class="line"> </div><div class="line">[session setActive:<span class="literal">YES</span> error:&amp;error];</div><div class="line"> </div><div class="line"><span class="keyword">if</span> (error) &#123;</div><div class="line">    <span class="comment">// Do some error handling</span></div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="comment">// 让app支持接受远程控制事件</span></div><div class="line">[[<span class="built_in">UIApplication</span> sharedApplication] beginReceivingRemoteControlEvents];</div></pre></td></tr></table></figure>
