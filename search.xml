@@ -1,17 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[投资理财平台列表]]></title>
-    <url>%2F2017%2F07%2F26%2Finvestment%2F</url>
-    <content type="text"><![CDATA[理财QQ群: 662054784 群主是名程序员, 接触理财也有一段时间了,所以把这些平台分享出来,注意: 投资有风险,理财需谨慎,这里分享的是投资返现的, 当然群主会从中间抽取一些手续费,[手动笑脸],但是5000以内不收手续费 诚天财富(立即返现)这个平台运行两年了,群主通过天眼查,网站域名申请人等信息确定这个平台没有虚假信息 注意:立返的金额就是总收益, 到期平台只返回本金 返现金额 一月标 1000立返73.88 一月标 5000立返370.00 一月标 1w立返650.00 约标 3w立返2200.00 约标 5w立返3800.00 约标 10万立返7900.00大于3W且全部是自己投资的是约标 做单流程 (本活动日期 到2017年8月6号) 注册（邀请码: cfc39ef01b2a6187）戳链接 诚天财富 认证。根据页面要求，实名认证（无需上传身份证，填写正确的身份证号即可）。手机号码认证 充值。点击充值，填写将要投资的金额。可以选择e汇通(支持多种银行) 投资。进入首页，找到一个月标点击:立即投资。 交单。截图（需截到用户名和投标记录）, 支付宝帐号(用户收钱), 投资平台 注意：最少投资1000 ，任何银行卡都可以 ,投资有风险,理财需谨慎 财优优 (次日返现)财优优隶属上海晖先金融信息服务有限公司，注册资本1亿，双APP、微信端、PC网站同时上线，国企背景。全网唯数不多的高返、安全、稳健的 爆款大毛, 本月已递交银行存管资料 8月份正式签署银行存管协议 返现金额 500档：收益：返现25+利息3.4+红包6+体验金7=41.4 1000档：收益：返现50+利息6.8+红包18+体验金7=80.8 5000档：收益：返现200+利息35+红包58+体验金7=300 1W档：收益：返现400+利息68+红包128+体验金7=603 5W档：收益：返现2300+利息342+红包308+体验金7=2957（限额10W） 做单流程 (本活动长期有效)电脑注册地址手机注册地址 交单格式 ：姓名、电话号码、投资金额、投资平台、支付宝帐号(用户收钱) 注意：仅仅首投有效(复投返3.8） 投资时 请注意勾选使用红包 新手体验金收益会自动放进优惠里面。]]></content>
-      <categories>
-        <category>投资理财</category>
-      </categories>
-      <tags>
-        <tag>投资理财 平台列表</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[Swift-去掉多余的打印]]></title>
     <url>%2F2017%2F07%2F10%2FSwift-%E5%8E%BB%E6%8E%89%E5%A4%9A%E4%BD%99%E7%9A%84%E6%89%93%E5%8D%B0%2F</url>
     <content type="text"><![CDATA[在我们开发过程中, 工具运行时控制台有许多关于网络相关的打印,非常烦人,我们可以选择屏蔽掉这些打印 屏蔽多余的打印选择Product-&gt;Scheme-&gt;Edit Scheme …或者直接按 command + shift + &lt; 快捷键，在弹出的窗口中Environment Variables 下添加 name为OS_ACTIVITY_MODE, value为disable 如图 发布时取消打印,自定义打印代码 OC代码 12345#ifndef DEBUG_MODE #define DLog( s, ... ) NSLog( @"&lt;%p %@:(%d)&gt; %@", self, [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] ) #else #define DLog( s, ... ) #endif Swift代码 123456789func LMRLog&lt;T&gt;(message : T, file : String = #file, lineNumber : Int = #line) &#123; #if DEBUG let fileName = (file as NSString).lastPathComponent print("[\(fileName):line:\(lineNumber)]- \(message)") #endif&#125;]]></content>
